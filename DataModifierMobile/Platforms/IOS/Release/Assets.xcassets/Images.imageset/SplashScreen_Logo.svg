@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 206.05 210.89">
+  <!-- Generator: Adobe Illustrator 29.6.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 207)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#radial-gradient);
+      }
+
+      .st1 {
+        fill: #fff;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="103.03" cy="105.44" fx="103.03" fy="105.44" r="104.24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2f6edf"/>
+      <stop offset="1" stop-color="#0d1c8e"/>
+    </radialGradient>
+  </defs>
+  <rect class="st0" width="206.05" height="210.89"/>
+  <rect class="st1" x="52.91" y="70.88" width="4.37" height="12.82"/>
+  <rect class="st1" x="52.9" y="89.71" width="4.37" height="12.82"/>
+  <rect class="st1" x="148.77" y="127.38" width="4.37" height="12.82"/>
+  <rect class="st1" x="100.84" y="133.52" width="4.37" height="12.82" transform="translate(-36.91 242.96) rotate(-90)"/>
+  <rect class="st1" x="148.76" y="146.21" width="4.37" height="12.82"/>
+  <rect class="st1" x="130.25" y="108.55" width="13.15" height="12.82"/>
+  <rect class="st1" x="130.25" y="127.38" width="13.15" height="12.82"/>
+  <rect class="st1" x="130.25" y="146.21" width="13.15" height="12.82"/>
+  <rect class="st1" x="62.64" y="89.71" width="13.15" height="12.82"/>
+  <rect class="st1" x="62.64" y="108.55" width="13.15" height="12.82"/>
+  <path class="st1" d="M143.41,52.05c-5.93,0-9.45,1.24-11.34,3.95h0l-.02.03c-.45.66-.82,1.39-1.09,2.23l-27.93,57.07-27.93-57.07c-.27-.83-.64-1.57-1.09-2.23l-.02-.04h0c-1.89-2.7-5.41-3.94-11.34-3.94h-9.75v3.24s9.48.24,9.75,8.05v20.36h13.15v-12.82h0v-.49s24.43,50.03,24.71,50.8v3.53c0,2.82-5.72,3.04-5.72,3.04v3.98h16.46v-3.98s-5.72.01-5.72-3.04v-3.53c.28-.77,24.71-50.8,24.71-50.8v.49h0v31.65h13.15v-39.2c.27-7.81,9.75-8.05,9.75-8.05v-3.24h-9.75.02ZM75.81,147.42v-7.22h0v-12.82h-13.15v20.36c-.27,7.81-9.75,8.05-9.75,8.05v3.24h32.69v-3.24s-9.77-.23-9.77-8.37h-.02Z"/>
+</svg>

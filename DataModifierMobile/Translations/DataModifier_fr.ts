@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr_FR" sourcelanguage="en_US">
+<context>
+    <name></name>
+    <message id="A.MainWindow.Title">
+        <location filename="../UI/AUIPrimitives/Window/AWindowMobileSafeArea.qml" line="29"/>
+        <location filename="../UI/AUIPrimitives/Window/AWindowMobileSafeArea.qml" line="86"/>
+        <source></source>
+        <translation>Data Modifier</translation>
+    </message>
+    <message id="DM.Password.Copied">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="259"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="552"/>
+        <source></source>
+        <translation>Mot de passe copié dans le presse-papiers</translation>
+    </message>
+    <message id="DM.Password.Pasted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="252"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="545"/>
+        <source></source>
+        <translation>Mot de passe collé depuis le presse-papiers</translation>
+    </message>
+    <message id="DM.Password.Deleted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="268"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="561"/>
+        <source></source>
+        <translation>Mot de passe supprimé</translation>
+    </message>
+    <message id="DM.Password.Empty">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="120"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="179"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="376"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="454"/>
+        <source></source>
+        <translation>Le mot de passe requis est vide</translation>
+    </message>
+    <message id="DM.Data.Copied">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="57"/>
+        <source></source>
+        <translation>Données copiées</translation>
+    </message>
+    <message id="DM.Data.Pasted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="62"/>
+        <source></source>
+        <translation>Données collées</translation>
+    </message>
+    <message id="DM.Data.Deleted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="67"/>
+        <source></source>
+        <translation>Données supprimées</translation>
+    </message>
+    <message id="DM.Decrypted.Empty">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="128"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="465"/>
+        <source></source>
+        <translation>Les données déchiffrées sont vides</translation>
+    </message>
+    <message id="DM.Data.Decrypted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="135"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="391"/>
+        <source></source>
+        <translation>Données déchiffrées</translation>
+    </message>
+    <message id="DM.Error.SomethingWentWrong">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="138"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="200"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="271"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="395"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="476"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="564"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="91"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="107"/>
+        <source></source>
+        <translation>Un problème est survenu</translation>
+    </message>
+    <message id="DM.Error.WrongPassword">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="140"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="397"/>
+        <source></source>
+        <translation>Mot de passe incorrect</translation>
+    </message>
+    <message id="DM.Encrypted.Empty">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="190"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="384"/>
+        <source></source>
+        <translation>Les données chiffrées sont vides</translation>
+    </message>
+    <message id="DM.Data.Encrypted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="197"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="472"/>
+        <source></source>
+        <translation>Données chiffrées</translation>
+    </message>
+    <message id="DM.Password.Default">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="142"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="27"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="97"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="98"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="170"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="171"/>
+        <source></source>
+        <translation>Saisir le mot de passe</translation>
+    </message>
+    <message id="DM.Encrypted.Default">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="216"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarTextEncrypted_splitted.qml" line="28"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarTextEncrypted_splitted.qml" line="83"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarTextEncrypted_splitted.qml" line="84"/>
+        <source></source>
+        <translation>Les données chiffrées se trouveront ici</translation>
+    </message>
+    <message id="DM.Encrypted.Deleted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="221"/>
+        <source></source>
+        <translation>Données chiffrées supprimées</translation>
+    </message>
+    <message id="DM.Encrypted.Pasted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="227"/>
+        <source></source>
+        <translation>Données chiffrées collées</translation>
+    </message>
+    <message id="DM.Encrypted.Copied">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="233"/>
+        <source></source>
+        <translation>Données chiffrées copiées</translation>
+    </message>
+    <message id="DM.Decrypted.Default">
+        <location filename="../UI/DMUI/Bar/Text/DMBarTextDecrypted_splitted.qml" line="28"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarTextDecrypted_splitted.qml" line="163"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarTextDecrypted_splitted.qml" line="164"/>
+        <source></source>
+        <translation>Inscrivez vos données ici</translation>
+    </message>
+    <message id="DM.Decrypted.Deleted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="267"/>
+        <source></source>
+        <translation>Données déchiffrées supprimées</translation>
+    </message>
+    <message id="DM.Decrypted.Pasted">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="273"/>
+        <source></source>
+        <translation>Données déchiffrées collées</translation>
+    </message>
+    <message id="DM.Decrypted.Copied">
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="284"/>
+        <source></source>
+        <translation>Données déchiffrées copiées</translation>
+    </message>
+    <message id="DM.MainMenu.Encryption.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="51"/>
+        <source></source>
+        <translation>Type de chiffrement</translation>
+    </message>
+    <message id="DM.MainMenu.Encryption.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="52"/>
+        <source></source>
+        <translation>Sélectionnez le type de chiffrement</translation>
+    </message>
+    <message id="DM.MainMenu.EncryptAndCopy.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="60"/>
+        <source></source>
+        <translation>Encrypt &amp; Copy</translation>
+    </message>
+    <message id="DM.MainMenu.EncryptAndCopy.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="61"/>
+        <source></source>
+        <translation>Chiffrer les données et les copier automatiquement dans le presse-papiers</translation>
+    </message>
+    <message id="DM.MainMenu.PasteAndDecrypt.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="69"/>
+        <source></source>
+        <translation>Paste &amp; Decrypt</translation>
+    </message>
+    <message id="DM.MainMenu.PasteAndDecrypt.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="70"/>
+        <source></source>
+        <translation>Coller automatiquement des données chiffrées depuis le presse-papiers et les déchiffrer</translation>
+    </message>
+    <message id="DM.MainMenu.Language.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="77"/>
+        <source></source>
+        <translation>Langue de l&apos;application</translation>
+    </message>
+    <message id="DM.MainMenu.Language.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="78"/>
+        <source></source>
+        <translation>Sélectionner la langue de l&apos;application</translation>
+    </message>
+    <message id="DM.MainMenu.UISchema.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="85"/>
+        <source></source>
+        <translation>Schéma UI/UX de l&apos;application</translation>
+    </message>
+    <message id="DM.MainMenu.UISchema.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="86"/>
+        <source></source>
+        <translation>Lorsque le schéma « Tout-en-un » (All-In-One) est sélectionné, les données à chiffrer et à déchiffrer sont traitées dans une seule fenêtre ; en revanche, avec le schéma « Scindé » (Splitted), elles sont traitées dans des fenêtres distinctes.</translation>
+    </message>
+    <message id="DM.MainMenu.About.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="98"/>
+        <source></source>
+        <translation>À propos de l&apos;application</translation>
+    </message>
+    <message id="DM.MainMenu.ButtonQuit.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="104"/>
+        <source></source>
+        <translation>Quitter l&apos;application</translation>
+    </message>
+    <message id="DM.MainMenu.ButtonQuit.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="105"/>
+        <source></source>
+        <translation>Quitter l&apos;application</translation>
+    </message>
+    <message id="DM.Data.Default">
+        <location filename="../UI/DMUI/Bar/Text/DMBarText_all_in_one.qml" line="31"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarText_all_in_one.qml" line="83"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarText_all_in_one.qml" line="126"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarText_all_in_one.qml" line="127"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarText_all_in_one.qml" line="146"/>
+        <location filename="../UI/DMUI/Bar/Text/DMBarText_all_in_one.qml" line="147"/>
+        <source></source>
+        <translation>Saisissez ou collez les données à chiffrer ou à déchiffrer</translation>
+    </message>
+</context>
+</TS>
