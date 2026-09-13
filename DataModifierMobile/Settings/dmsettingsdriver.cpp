@@ -173,6 +173,8 @@ QVariantMap DMSettingsDriver::mDefaultSettings(void) {
 		{"SwitchEncryptToClipbard",false},
 		{"SwitchDecryptFromClipbard",false},
 		{"Locale","en"},
+		{"ClipboardClear",false},
+		{"ClipboardClearTimeout",30},
 	};
 
 	return oOutput;

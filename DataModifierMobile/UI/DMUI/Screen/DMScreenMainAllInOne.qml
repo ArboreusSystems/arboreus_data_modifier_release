@@ -166,8 +166,19 @@ Item {
 			pButtonEncryptAndCopy.pMouseArea.onClicked: {
 
 				oRoot.forceActiveFocus();
-				oButtonEncrypt.mEncrypt();
-				AClipboard.mTextCopyTo(oTextEditWrapper.pTextEdit.text);
+
+				if (oButtonEncrypt.mEncrypt()) {
+					if (ASettings.mGetValue("ClipboardClear")) {
+						AClipboard.mTextCopySensitiveToAndClear(
+							oTextEditWrapper.pTextEdit.text,
+							ASettings.mGetValue("ClipboardClearTimeout")
+						);
+					} else {
+						AClipboard.mTextCopySensitiveTo(
+							oTextEditWrapper.pTextEdit.text
+						);
+					}
+				}
 			}
 
 			function mEncrypt() {
@@ -177,7 +188,7 @@ Item {
 					oBarPassword.pPassword === oBarPassword.pTextDefault
 				) {
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Password.Empty"),"Error");
-					return;
+					return false;
 				}
 
 				if (Qt.inputMethod.visible) Qt.inputMethod.hide();
@@ -188,7 +199,7 @@ Item {
 					oTextEditWrapper.pTextEdit.text === oTextEditWrapper.pTextDefault
 				) {
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Encrypted.Empty"),"Error");
-					return;
+					return false;
 				}
 
 				var oEncryptedObject = DMCore.mEncodeString(oTextEditWrapper.pTextEdit.text);
@@ -196,6 +207,7 @@ Item {
 					oTextEditWrapper.pTextEdit.text = oEncryptedObject.pValue;
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Data.Encrypted"),"Regular");
 					console.debug("Text encrypted");
+					return true;
 				} else {
 					var oMessage = qsTrId("DM.Error.SomethingWentWrong");
 					oRoot.pScreen.mShowNotification(oMessage,"Error");
@@ -203,6 +215,7 @@ Item {
 					console.error("Status: " + oEncryptedObject.pStatus);
 					console.error("Code: " + oEncryptedObject.pCode);
 					console.error("Value: " + oEncryptedObject.pValue);
+					return false;
 				}
 			}
 		}
@@ -255,7 +268,17 @@ Item {
 
 		pButtonPasswordToClipboard.onClicked: {
 
-			AClipboard.mTextCopyTo(oBarPassword.pTextInput.text);
+			if (ASettings.mGetValue("ClipboardClear")) {
+				AClipboard.mTextCopySensitiveToAndClear(
+					oBarPassword.pTextInput.text,
+					ASettings.mGetValue("ClipboardClearTimeout")
+				);
+			} else {
+				AClipboard.mTextCopySensitiveTo(
+					oBarPassword.pTextInput.text
+				);
+			}
+
 			oRoot.pScreen.mShowNotification(qsTrId("DM.Password.Copied"),"Password");
 			console.debug("Password copied to clipboard");
 		}

@@ -54,6 +54,15 @@ Item {
 
 			DMMenuSwitch {
 
+				id: oSwitchClipboardClear;
+				pID: "ClipboardClear"
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.ClipboardClear.label");
+				pNotice: qsTrId("DM.MainMenu.ClipboardClear.notice");
+			}
+
+			DMMenuSwitch {
+
 				id: oSwitchEncryptToClipboard;
 				pID: "SwitchEncryptToClipbard"
 				pDeclareAction: true;

@@ -229,7 +229,17 @@ Item {
 
 			pButtonCopy.pMouseArea.onClicked: {
 
-				AClipboard.mTextCopyTo(oTextFieldEncrypted.pTextRaw);
+				if (ASettings.mGetValue("ClipboardClear")) {
+					AClipboard.mTextCopySensitiveToAndClear(
+						oTextFieldEncrypted.pTextRaw,
+						ASettings.mGetValue("ClipboardClearTimeout")
+					);
+				} else {
+					AClipboard.mTextCopySensitiveTo(
+						oTextFieldEncrypted.pTextRaw
+					);
+				}
+
 				oRoot.pScreen.mShowNotification(qsTrId("DM.Encrypted.Copied"),"Regular");
 			}
 		}
@@ -280,7 +290,17 @@ Item {
 
 			pButtonCopy.pMouseArea.onClicked: {
 
-				AClipboard.mTextCopyTo(oTextFieldDecrypted.pTextEdit.text);
+				if (ASettings.mGetValue("ClipboardClear")) {
+					AClipboard.mTextCopySensitiveToAndClear(
+						oTextFieldDecrypted.pTextEdit.text,
+						ASettings.mGetValue("ClipboardClearTimeout")
+					);
+				} else {
+					AClipboard.mTextCopySensitiveTo(
+						oTextFieldDecrypted.pTextEdit.text
+					);
+				}
+
 				oRoot.pScreen.mShowNotification(qsTrId("DM.Decrypted.Copied"),"Regular");
 			}
 
@@ -319,7 +339,7 @@ Item {
 
 			id: oBarText;
 			width: parent.width;
-			height: oMenuAction.pTopBarHeight;
+			height: oMenuAction.pTopBarHeight * 1.1;
 			anchors.top: parent.top;
 			anchors.left: parent.left;
 			anchors.right: parent.right;
@@ -351,7 +371,6 @@ Item {
 
 				if (oButtonBlockDecrypted.mDecrypt(oTextFieldEncrypted.pTextRaw)) {
 					oMenuAction.mSelectDecrypted();
-					console.debug("pButtonDecrypt.pMouseArea.onClicked");
 				}
 			}
 
@@ -363,7 +382,6 @@ Item {
 				if (oButtonBlockDecrypted.mDecrypt(oEncryptedString)) {
 					oTextFieldEncrypted.mSetText(oEncryptedString);
 					oMenuAction.mSelectDecrypted();
-					console.debug("pButtonPasteAndDecrypt.pMouseArea.onClicked");
 				}
 			}
 
@@ -430,7 +448,6 @@ Item {
 
 				if (oButtonBlockEncrypted.mEncrypt()) {
 					oMenuAction.mSelectEncrypted();
-					console.debug("pButtonDecrypt.pMouseArea.onClicked")
 				}
 			}
 
@@ -439,9 +456,19 @@ Item {
 				oRoot.forceActiveFocus();
 
 				if (oButtonBlockEncrypted.mEncrypt()) {
+
 					oMenuAction.mSelectEncrypted();
-					AClipboard.mTextCopyTo(oTextFieldEncrypted.pTextRaw);
-					console.debug("pButtonDecrypt.pMouseArea.onClicked")
+
+					if (ASettings.mGetValue("ClipboardClear")) {
+						AClipboard.mTextCopySensitiveToAndClear(
+							oTextFieldEncrypted.pTextRaw,
+							ASettings.mGetValue("ClipboardClearTimeout")
+						);
+					} else {
+						AClipboard.mTextCopySensitiveTo(
+							oTextFieldEncrypted.pTextRaw
+						);
+					}
 				}
 			}
 
@@ -548,7 +575,17 @@ Item {
 
 		pButtonPasswordToClipboard.onClicked: {
 
-			AClipboard.mTextCopyTo(oBarPassword.pTextInput.text);
+			if (ASettings.mGetValue("ClipboardClear")) {
+				AClipboard.mTextCopySensitiveToAndClear(
+					oBarPassword.pTextInput.text,
+					ASettings.mGetValue("ClipboardClearTimeout")
+				);
+			} else {
+				AClipboard.mTextCopySensitiveTo(
+					oBarPassword.pTextInput.text
+				);
+			}
+
 			oRoot.pScreen.mShowNotification(qsTrId("DM.Password.Copied"),"Password");
 			console.debug("Password copied to clipboard");
 		}

@@ -249,7 +249,16 @@ Rectangle {
 
 					pMouseArea.onClicked: {
 
-						AClipboard.mTextCopyTo(oTextEdit.text);
+						if (ASettings.mGetValue("ClipboardClear")) {
+							AClipboard.mTextCopySensitiveToAndClear(
+								oTextEdit.text,
+								ASettings.mGetValue("ClipboardClearTimeout")
+							);
+						} else {
+							AClipboard.mTextCopySensitiveTo(
+								oTextEdit.text
+							);
+						}
 					}
 				}
 
