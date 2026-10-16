@@ -31,4 +31,3 @@ DMWindowMobile {
 		anchors.fill: parent;
 	}
 }
-

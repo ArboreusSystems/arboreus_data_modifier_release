@@ -28,6 +28,7 @@
 #include <alogger.h>
 #include <aapplication.h>
 #include <asettings.h>
+#include <aprivacy.h>
 #include <auniversalmetatypes.h>
 #include <auihandler.h>
 #include <adevice.h>
@@ -52,6 +53,7 @@ class DMBackend : public QObject {
 		ALogger* pLogger = nullptr;
 		AApplication* pApplication = nullptr;
 		ASettings* pSettings = nullptr;
+		APrivacy* pPrivacy = nullptr;
 		AUIHandler* pUIHandler = nullptr;
 		ADevice* pDevice = nullptr;
 		AClipboard* pClipboard = nullptr;
@@ -87,6 +89,7 @@ class DMBackend : public QObject {
 		void mInitMetaTypes(void);
 		void mInitApplication(void);
 		void mInitSettings(void);
+		void mInitPrivacy(void);
 		void mInitLogger(void);
 		void mInitUIHandler(void);
 		void mInitCore(void);

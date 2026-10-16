@@ -47,24 +47,15 @@ Item {
 			DMMenuEncryption {
 
 				id: oEncryption;
-				pID: "Encryption"
+				pID: "Encryption";
 				pLabel: qsTrId("DM.MainMenu.Encryption.label");
 				pNotice: qsTrId("DM.MainMenu.Encryption.notice");
 			}
 
 			DMMenuSwitch {
 
-				id: oSwitchClipboardClear;
-				pID: "ClipboardClear"
-				pDeclareAction: true;
-				pLabel: qsTrId("DM.MainMenu.ClipboardClear.label");
-				pNotice: qsTrId("DM.MainMenu.ClipboardClear.notice");
-			}
-
-			DMMenuSwitch {
-
 				id: oSwitchEncryptToClipboard;
-				pID: "SwitchEncryptToClipbard"
+				pID: "SwitchEncryptToClipbard";
 				pDeclareAction: true;
 				pLabel: qsTrId("DM.MainMenu.EncryptAndCopy.label");
 				pNotice: qsTrId("DM.MainMenu.EncryptAndCopy.notice");
@@ -73,10 +64,73 @@ Item {
 			DMMenuSwitch {
 
 				id: oSwitchDecryptFromClipboard;
-				pID: "SwitchDecryptFromClipbard"
+				pID: "SwitchDecryptFromClipbard";
 				pDeclareAction: true;
 				pLabel: qsTrId("DM.MainMenu.PasteAndDecrypt.label");
 				pNotice: qsTrId("DM.MainMenu.PasteAndDecrypt.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchScreenClear;
+				pID: "SwitchScreenClear";
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.SwitchScreenClear.label");
+				pNotice: qsTrId("DM.MainMenu.SwitchScreenClear.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchPasswordClear;
+				pID: "SwitchPasswordClear";
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.SwitchPasswordClear.label");
+				pNotice: qsTrId("DM.MainMenu.SwitchPasswordClear.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchClipboardClear;
+				pID: "SwitchClipboardClear"
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.ClipboardClear.label");
+				pNotice: Qt.platform.os === "ios" ?
+					qsTrId("DM.MainMenu.ClipboardClear.IOS.notice"):
+					qsTrId("DM.MainMenu.ClipboardClear.Android.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchInputTextHelpers;
+				pID: "SwitchInputTextHelpers"
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.SwitchInputTextHelpers.label");
+				pNotice: qsTrId("DM.MainMenu.SwitchInputTextHelpers.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchContextMenuProhibited;
+				pID: "SwitchContextMenuProhibited"
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.SwitchContextMenuProhibited.label");
+				pNotice: qsTrId("DM.MainMenu.SwitchContextMenuProhibited.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchScreenPrivacy;
+				pID: "SwitchScreenPrivacy";
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.ScreenPrivacy.label");
+				pNotice: Qt.platform.os === "ios" ?
+					qsTrId("DM.MainMenu.ScreenPrivacy.IOS.notice"):
+					qsTrId("DM.MainMenu.ScreenPrivacy.Android.notice");
+
+				pSwitch.onClicked: {
+
+					APrivacy.mScreen(ASettings.mGetValue(oSwitchScreenPrivacy.pID));
+				}
 			}
 
 			DMMenuLanguage {

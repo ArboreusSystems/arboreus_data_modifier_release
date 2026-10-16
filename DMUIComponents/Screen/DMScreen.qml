@@ -137,6 +137,25 @@ AScreen {
 		}
 	}
 
+	Connections {
+
+		target: APrivacy;
+
+		function onSgScreenshotTaken() {
+
+			oRoot.mShowNotification(qsTrId("DM.Error.ScreenshotTaken"),"Error");
+		}
+
+		function onSgScreenRecordingChanged(inCaptured) {
+
+			if (inCaptured) {
+				oRoot.mShowNotification(qsTrId("DM.Error.ScreenRecordingStarted"),"Error");
+			} else {
+				oRoot.mShowNotification(qsTrId("DM.Error.ScreenRecordingStopped"),"Regular");
+			}
+		}
+	}
+
 	function mShowNotification(inMessage,inState) {
 
 		if (oAnimationAppearing.running) oAnimationAppearing.stop();

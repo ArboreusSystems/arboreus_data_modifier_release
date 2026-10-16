@@ -165,6 +165,20 @@ Rectangle {
 							}
 						}
 					}
+
+					Connections {
+
+						target: Application;
+
+						function onStateChanged(inState) {
+
+							if (inState === Qt.ApplicationHidden || inState === Qt.ApplicationSuspended) {
+								if (ASettings.mGetValue("SwitchScreenClear")) {
+									oTextEdit.text = qsTrId("DM.Data.Default");
+								}
+							}
+						}
+					}
 				}
 			}
 
@@ -219,7 +233,8 @@ Rectangle {
 
 					id: oButtonDelete;
 					pID: "ButtonDelete";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditDelete.svg";
+					pType: "Decrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditDelete_purple.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 
@@ -227,7 +242,8 @@ Rectangle {
 
 					id: oButtonPaste;
 					pID: "ButtonPaste";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditPaste.svg";
+					pType: "Decrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditPaste_purple.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 
@@ -235,7 +251,8 @@ Rectangle {
 
 					id: oButtonWrite;
 					pID: "ButtonWrite";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditWrite.svg";
+					pType: "Decrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditWrite_purple.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 
@@ -243,7 +260,8 @@ Rectangle {
 
 					id: oButtonCopy;
 					pID: "ButtonCopy";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditCopy.svg";
+					pType: "Decrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditCopy_purple.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 
@@ -251,7 +269,8 @@ Rectangle {
 
 					id: oButtonOk;
 					pID: "ButtonOk";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditOk.svg";
+					pType: "Decrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditOk_purple.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 			}

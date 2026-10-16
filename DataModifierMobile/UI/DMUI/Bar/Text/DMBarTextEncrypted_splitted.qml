@@ -86,6 +86,20 @@ Rectangle {
 			}
 		}
 
+		Connections {
+
+			target: Application;
+
+			function onStateChanged(inState) {
+
+				if (inState === Qt.ApplicationHidden || inState === Qt.ApplicationSuspended) {
+					if (ASettings.mGetValue("SwitchScreenClear")) {
+						oFlickable.pText.text = oRoot.pTextDefault;
+					}
+				}
+			}
+		}
+
 		function mCreateTextView(inText) {
 
 			var oMax = -15;
@@ -145,7 +159,8 @@ Rectangle {
 
 					id: oButtonDelete;
 					pID: "ButtonDelete";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditDelete.svg";
+					pType: "Encrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditDelete_blue.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 
@@ -153,7 +168,8 @@ Rectangle {
 
 					id: oButtonPaste;
 					pID: "ButtonPaste";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditPaste.svg";
+					pType: "Encrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditPaste_blue.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 
@@ -161,7 +177,8 @@ Rectangle {
 
 					id: oButtonCopy;
 					pID: "ButtonCopy";
-					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditCopy.svg";
+					pType: "Encrypted";
+					pImageSourceActive: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditCopy_blue.svg";
 					pImageSourceHover: "qrc:/Resources/Images/Button/Password/DM_ButtonPasswordHover.svg";
 				}
 			}

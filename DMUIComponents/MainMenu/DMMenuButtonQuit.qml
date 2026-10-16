@@ -37,6 +37,7 @@ DMMenuButton {
 
 	pButton.pMouseArea.onClicked: {
 
+		AClipboard.mClear();
 		AApplication.mQuit();
 	}
 }

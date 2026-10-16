@@ -16,9 +16,15 @@
 // Class header
 #include "dmconfig.h"
 
+// Forwarded headers
+#include <dmbackend.h>
+
 // Namespace
 using namespace ARB;
 using namespace DM;
+
+// Global variables
+extern DMBackend* gBackend;
 
 
 // -----------
@@ -122,6 +128,45 @@ QString DMConfig::AApplicationConfig_Application_Name(void) {
 	Doc.
 */
 
+QString DMConfig::AApplicationConfig_Application_VersionFull(void) {
+
+	return pAApplicationConfig_Application_VersionFull;
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+QString DMConfig::AApplicationConfig_Application_VersionShort(void) {
+
+	return pAApplicationConfig_Application_VersionShort;
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+QString DMConfig::AApplicationConfig_Application_VersionCode(void) {
+
+	return pAApplicationConfig_Application_VersionCode;
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
 void DMConfig::AApplicationConfig_Lifecycle_WillLaunchBackend(void) {
 
 	ATemplatesMetatypes::mInit();
@@ -164,6 +209,10 @@ void DMConfig::AApplicationConfig_Lifecycle_WillLaunchUI(void) {
 */
 
 void DMConfig::AApplicationConfig_Lifecycle_DidLaunchUI(void) {
+
+	gBackend->pPrivacy->mScreen(
+		gBackend->pSettings->mGetValue("SwitchScreenPrivacy").toBool()
+	);
 
 	_A_DEBUG << "AApplicationConfig_Lifecycle_DidLaunchUI";
 }

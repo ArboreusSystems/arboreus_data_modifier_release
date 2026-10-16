@@ -27,7 +27,7 @@ using namespace ARB;
 	Doc.
 */
 
-DMCoreAgentDecodeString::DMCoreAgentDecodeString(QObject* parent) : AThreadAgentTemplate{parent} {
+DMCoreAgentDecodeString::DMCoreAgentDecodeString(QObject* parent) : AThreadAgentTemplate(parent) {
 
 	_A_DEBUG << "AModifierAgentDecodeString created";
 }
@@ -42,6 +42,8 @@ DMCoreAgentDecodeString::DMCoreAgentDecodeString(QObject* parent) : AThreadAgent
 
 DMCoreAgentDecodeString::~DMCoreAgentDecodeString(void) {
 
+	mClear();
+
 	_A_DEBUG << "AModifierAgentDecodeString deleted";
 }
 
@@ -55,7 +57,6 @@ DMCoreAgentDecodeString::~DMCoreAgentDecodeString(void) {
 
 void DMCoreAgentDecodeString::slRun(void) {
 
-	pOutput = AOutputQVariant();
 	pOutput.pStatus = _A_ENUM_STATUS::Error;
 
 	QByteArray oKeyBytes = pService->mKeyBytes();
@@ -70,10 +71,51 @@ void DMCoreAgentDecodeString::slRun(void) {
 		pOutput.pCode = oDecodedOutput.pCode;
 		pOutput.pValue = oDecodedOutput.pValue;
 	} else {
+
 		pOutput.pStatus = oDecodedOutput.pStatus;
 		pOutput.pCode = oDecodedOutput.pCode;
-		pOutput.pValue = QVariant::fromValue(QString(oDecodedOutput.pValue));
+
+		QString oDecodedString = QString::fromUtf8(oDecodedOutput.pValue);
+		oDecodedString.detach();
+		pOutput.pValue = QVariant::fromValue(oDecodedString);
+	}
+
+	if (!oKeyBytes.isEmpty()) {
+		OPENSSL_cleanse(oKeyBytes.data(), oKeyBytes.size());
+		oKeyBytes.clear();
+		oKeyBytes.squeeze();
+	}
+
+	if (!oVectorBytes.isEmpty()) {
+		OPENSSL_cleanse(oVectorBytes.data(),oVectorBytes.size());
+		oVectorBytes.clear();
+		oVectorBytes.squeeze();
+	}
+
+	if (!oEncodedBytes.isEmpty()) {
+		OPENSSL_cleanse(oEncodedBytes.data(),oEncodedBytes.size());
+		oEncodedBytes.clear();
+		oEncodedBytes.squeeze();
 	}
 
 	emit this->sgFinished();
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+void DMCoreAgentDecodeString::mClear(void) {
+
+	if (&pString != &gDMCoreAgentDecodeString_EmptyString && !pString.isEmpty()) {
+
+		QChar* pRawHeapData = pString.data();
+		for (int i = 0; i < pString.length(); ++i) pRawHeapData[i] = QChar(0);
+		pString.clear();
+		pString.squeeze();
+	}
 }

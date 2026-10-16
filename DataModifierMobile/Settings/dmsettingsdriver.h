@@ -51,6 +51,7 @@ class DMSettingsDriver :
 
 		QVariant mGetValue(QString inKey);
 		void mSetValue(QString inKey,QVariant inValue);
+		void mDeleteByKey(QString inKey);
 
 	private:
 
@@ -62,6 +63,7 @@ class DMSettingsDriver :
 		void mLoadSettings(QString inPath);
 		void mWriteSettings(void);
 		QVariantMap mDefaultSettings(void);
+		void mSynchronize(void);
 };
 
 } // namespace DM

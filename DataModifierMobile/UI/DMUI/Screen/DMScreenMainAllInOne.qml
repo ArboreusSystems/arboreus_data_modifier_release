@@ -107,7 +107,7 @@ Item {
 			pButtonPasteAndDecrypt.pMouseArea.onClicked: {
 
 				oRoot.forceActiveFocus();
-				oTextEditWrapper.pTextEdit.text = AClipboard.mTextPasteFrom();
+				oTextEditWrapper.pTextEdit.text = AClipboard.mTextPaste();
 				oButtonDecrypt.mDecrypt();
 			}
 
@@ -132,6 +132,8 @@ Item {
 				var oDecryptedObject = DMCore.mDecodeString(oTextEditWrapper.pTextEdit.text);
 				if (oDecryptedObject.pStatus === AEnumStatus.Ok) {
 					oTextEditWrapper.pTextEdit.text = oDecryptedObject.pValue;
+					DMCore.mClearOutput(oDecryptedObject);
+					oDecryptedObject = {};
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Data.Decrypted"),"Regular");
 					console.debug("Text decrypted");
 				} else {
@@ -168,13 +170,13 @@ Item {
 				oRoot.forceActiveFocus();
 
 				if (oButtonEncrypt.mEncrypt()) {
-					if (ASettings.mGetValue("ClipboardClear")) {
-						AClipboard.mTextCopySensitiveToAndClear(
+					if (ASettings.mGetValue("SwitchClipboardClear")) {
+						AClipboard.mTextCopyPrivateAndClear(
 							oTextEditWrapper.pTextEdit.text,
-							ASettings.mGetValue("ClipboardClearTimeout")
+							ASettings.mGetValue("SwitchClipboardClearTimeout")
 						);
 					} else {
-						AClipboard.mTextCopySensitiveTo(
+						AClipboard.mTextCopyPrivate(
 							oTextEditWrapper.pTextEdit.text
 						);
 					}
@@ -205,6 +207,8 @@ Item {
 				var oEncryptedObject = DMCore.mEncodeString(oTextEditWrapper.pTextEdit.text);
 				if (oEncryptedObject.pStatus === AEnumStatus.Ok) {
 					oTextEditWrapper.pTextEdit.text = oEncryptedObject.pValue;
+					DMCore.mClearOutput(oEncryptedObject);
+					oEncryptedObject = {};
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Data.Encrypted"),"Regular");
 					console.debug("Text encrypted");
 					return true;
@@ -261,7 +265,7 @@ Item {
 
 		pButtonPasswordFromClipboard.onClicked: {
 
-			oBarPassword.pTextInput.text = AClipboard.mTextPasteFrom();
+			oBarPassword.pTextInput.text = AClipboard.mTextPaste();
 			oRoot.pScreen.mShowNotification(qsTrId("DM.Password.Pasted"),"Password");
 			console.debug("Password copied from clipboard");
 		}

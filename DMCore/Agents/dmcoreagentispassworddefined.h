@@ -42,7 +42,7 @@ class DMCoreAgentIsPasswordDefined : public AThreadAgentTemplate {
 
 	public:
 
-		AOutputQVariant pOutput = AOutputQVariant();
+		AOutputQVariant pOutput;
 		DMCoreService* pService = nullptr;
 
 		explicit DMCoreAgentIsPasswordDefined(QObject* parent = nullptr);

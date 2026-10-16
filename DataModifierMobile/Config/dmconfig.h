@@ -81,6 +81,9 @@ class DMConfig :
 		QThread::Priority AApplicationConfig_Application_ThreadPriority(void);
 		QString AApplicationConfig_Application_Organisation(void);
 		QString AApplicationConfig_Application_Name(void);
+		QString AApplicationConfig_Application_VersionFull(void);
+		QString AApplicationConfig_Application_VersionShort(void);
+		QString AApplicationConfig_Application_VersionCode(void);
 
 		QString AApplicationConfig_Registry_Value(void);
 		QString AApplicationConfig_Registry_Salt(void);
@@ -116,6 +119,9 @@ class DMConfig :
 
 	private:
 
+		QString pAApplicationConfig_Application_VersionFull = QString(_DM_VERSION_FULL);
+		QString pAApplicationConfig_Application_VersionShort = QString(_DM_VERSION_SHORT);
+		QString pAApplicationConfig_Application_VersionCode = QString(_DM_VERSION_CODE);
 		QThread::Priority pAApplicationConfig_Application_ThreadPriority = QThread::Priority::LowPriority;
 		QString pAAplication_Application_Name = "DataModifier";
 

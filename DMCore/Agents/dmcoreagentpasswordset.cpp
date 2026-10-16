@@ -27,7 +27,7 @@ using namespace ARB;
 	Doc.
 */
 
-DMCoreAgentPasswordSet::DMCoreAgentPasswordSet(QObject *parent) : AThreadAgentTemplate{parent} {
+DMCoreAgentPasswordSet::DMCoreAgentPasswordSet(QObject* parent) : AThreadAgentTemplate(parent) {
 
 	_A_DEBUG << "AModifierAgentPasswordSet created";
 }
@@ -41,6 +41,8 @@ DMCoreAgentPasswordSet::DMCoreAgentPasswordSet(QObject *parent) : AThreadAgentTe
 */
 
 DMCoreAgentPasswordSet::~DMCoreAgentPasswordSet(void) {
+
+	mClear();
 
 	_A_DEBUG << "AModifierAgentPasswordSet deleted";
 }
@@ -65,4 +67,23 @@ void DMCoreAgentPasswordSet::slRun(void) {
 	pOutput.pValue = QVariant::fromValue(oResult);
 
 	emit this->sgFinished();
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+void DMCoreAgentPasswordSet::mClear(void) {
+
+	if (&pPassword != &gDMCoreAgentPasswordSet_EmptyPassword && !pPassword.isEmpty()) {
+
+		QChar* pRawHeapData = pPassword.data();
+		for (int i = 0; i < pPassword.length(); ++i) pRawHeapData[i] = QChar(0);
+		pPassword.clear();
+		pPassword.squeeze();
+	}
 }

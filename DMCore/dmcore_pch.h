@@ -21,11 +21,18 @@
 #include <QEventLoop>
 #include <QVariantMap>
 #include <QCryptographicHash>
+#include <QJSValue>
+#include <QChar>
 #include <sys/mman.h>
+#include <cstring>
+#include <atomic>
 
 // OpenSSL includes
-#include <openssl/evp.h>
 #include <openssl/rand.h>
+#include <openssl/evp.h>
+#include <openssl/kdf.h>
+#include <openssl/core_names.h>
+#include <openssl/crypto.h>
 
 // Application includes
 

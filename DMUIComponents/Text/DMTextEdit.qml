@@ -33,4 +33,45 @@ ATextEditMobile {
 	font.pixelSize: AUIConfig.mFontSizeRegular();
 	selectionColor: AColors.mGetString("Blue");
 	selectedTextColor: AColors.mGetString("WhiteLight");
+
+	Component.onCompleted: {
+
+		oRoot.pProhibitContextMenu = ASettings.mGetValue("SwitchContextMenuProhibited");
+		oRoot.mSetInputMethods(ASettings.mGetValue("SwitchInputTextHelpers"));
+	}
+
+	Connections {
+
+		target: ASettings;
+
+		function onSgSetValue(inKey,inValue) {
+
+			if (inKey === "SwitchContextMenuProhibited") {
+				oRoot.pProhibitContextMenu = inValue;
+			} else if (inKey === "SwitchInputTextHelpers") {
+				oRoot.mSetInputMethods(inValue);
+			}
+		}
+	}
+
+	function mSetInputMethods(inValue) {
+
+		if (Qt.platform.os === "ios") {
+			if (inValue) {
+				oRoot.inputMethodHints = Qt.ImhNone;
+			} else {
+				oRoot.inputMethodHints = Qt.ImhSensitiveData | Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase;
+			}
+		} else if (Qt.platform.os === "android") {
+			oRoot.focus = false;
+			Qt.inputMethod.hide();
+			Qt.callLater(function() {
+				if (inValue) {
+					oRoot.inputMethodHints = Qt.ImhNone;
+				} else {
+					oRoot.inputMethodHints = Qt.ImhSensitiveData | Qt.ImhNoPredictiveText | Qt.ImhNoAutoUppercase;
+				}
+			});
+		}
+	}
 }

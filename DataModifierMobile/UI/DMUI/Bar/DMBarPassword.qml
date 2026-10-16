@@ -110,6 +110,8 @@ Rectangle {
 					var oPasswordSet = DMCore.mPasswordSet(oPasswordInput.pTextInput.text);
 					if (oPasswordSet.pStatus === AEnumStatus.Ok) {
 						oPasswordInput.pTextInput.text = oRoot.pPasswordMask;
+						DMCore.mClearOutput(oPasswordSet);
+						oPasswordSet = {};
 						oButtonPassword.state = "Active";
 						oButtonPassword.pAccept = false;
 						console.error("Set new password");
@@ -126,6 +128,20 @@ Rectangle {
 			oButtonVisible.pVisibility = true;
 		}
 
+		Connections {
+
+			target: Application;
+
+			function onStateChanged(inState) {
+
+				if (inState === Qt.ApplicationHidden || inState === Qt.ApplicationSuspended) {
+					if (ASettings.mGetValue("SwitchPasswordClear")) {
+						oPasswordInput.pTextInput.text = oRoot.pTextDefault;
+					}
+				}
+			}
+		}
+
 		function mPasswordGet() {
 
 			var oPasswordGet = DMCore.mPasswordGet();
@@ -135,6 +151,8 @@ Rectangle {
 				oRoot.pScreen.mShowNotification(qsTrId("DM.Error.SomethingWentWrong"),"Error");
 				console.error("Can't get password");
 			}
+			DMCore.mClearOutput(oPasswordGet);
+			oPasswordGet = {};
 		}
 	}
 

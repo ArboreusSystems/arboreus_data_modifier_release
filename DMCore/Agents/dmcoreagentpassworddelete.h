@@ -42,7 +42,7 @@ class DMCoreAgentPasswordDelete : public AThreadAgentTemplate {
 
 	public:
 
-		AOutputQVariant pOutput = AOutputQVariant();
+		AOutputQVariant pOutput;
 		DMCoreService* pService = nullptr;
 
 		explicit DMCoreAgentPasswordDelete(QObject* parent = nullptr);

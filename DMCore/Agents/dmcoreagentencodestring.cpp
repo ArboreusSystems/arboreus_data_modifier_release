@@ -27,7 +27,9 @@ using namespace ARB;
 	Doc.
 */
 
-DMCoreAgentEncodeString::DMCoreAgentEncodeString(QObject* parent) : AThreadAgentTemplate{parent} {
+DMCoreAgentEncodeString::DMCoreAgentEncodeString(QObject* parent) : AThreadAgentTemplate(parent) {
+
+	pString = QString("");
 
 	_A_DEBUG << "AModifierAgentEncodeString created";
 }
@@ -42,6 +44,8 @@ DMCoreAgentEncodeString::DMCoreAgentEncodeString(QObject* parent) : AThreadAgent
 
 DMCoreAgentEncodeString::~DMCoreAgentEncodeString(void) {
 
+	mClear();
+
 	_A_DEBUG << "AModifierAgentEncodeString deleted";
 }
 
@@ -55,12 +59,13 @@ DMCoreAgentEncodeString::~DMCoreAgentEncodeString(void) {
 
 void DMCoreAgentEncodeString::slRun(void) {
 
-	pOutput = AOutputQVariant();
 	pOutput.pStatus = _A_ENUM_STATUS::Error;
 
-	QByteArray oStringBytes = pString.toUtf8();
 	QByteArray oKeyBytes = pService->mKeyBytes();
 	QByteArray oVectorBytes = pService->mVectorBytes();
+
+	QByteArray oStringBytes = pString.toUtf8();
+	oStringBytes.detach();
 
 	AOutputQByteArray oEncodedOutput = pService->pDriver->mEncode(oStringBytes,oKeyBytes,oVectorBytes);
 	if (oEncodedOutput.pStatus != _A_ENUM_STATUS::Ok) {
@@ -68,13 +73,54 @@ void DMCoreAgentEncodeString::slRun(void) {
 		pOutput.pCode = oEncodedOutput.pCode;
 		pOutput.pValue = oEncodedOutput.pValue;
 	} else {
+
 		pOutput.pStatus = oEncodedOutput.pStatus;
 		pOutput.pCode = oEncodedOutput.pCode;
-		pOutput.pValue = QVariant::fromValue(QString(oEncodedOutput.pValue.toBase64(
-			QByteArray::Base64UrlEncoding|QByteArray::OmitTrailingEquals
-		)));
+
+		QString oBase64Result = QString::fromUtf8(oEncodedOutput.pValue.toBase64(
+			QByteArray::Base64UrlEncoding | QByteArray::OmitTrailingEquals
+		));
+		oBase64Result.detach();
+		pOutput.pValue = QVariant::fromValue(oBase64Result);
+	}
+
+	if (!oStringBytes.isEmpty()) {
+		OPENSSL_cleanse(oStringBytes.data(), oStringBytes.size());
+		oStringBytes.clear();
+		oStringBytes.squeeze();
+	}
+
+	if (!oKeyBytes.isEmpty()) {
+		OPENSSL_cleanse(oKeyBytes.data(), oKeyBytes.size());
+		oKeyBytes.clear();
+		oKeyBytes.squeeze();
+	}
+
+	if (!oVectorBytes.isEmpty()) {
+		OPENSSL_cleanse(oVectorBytes.data(), oVectorBytes.size());
+		oVectorBytes.clear();
+		oVectorBytes.squeeze();
 	}
 
 	emit this->sgFinished();
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+void DMCoreAgentEncodeString::mClear(void) {
+
+	if (&pString != &gDMCoreAgentEncodeString_EmptyString && !pString.isEmpty()) {
+
+		QChar* pRawHeapData = pString.data();
+		for (int i = 0; i < pString.length(); ++i) pRawHeapData[i] = QChar(0);
+		pString.clear();
+		pString.squeeze();
+	}
 }
 

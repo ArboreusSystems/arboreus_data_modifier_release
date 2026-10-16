@@ -52,9 +52,9 @@ Item {
 		id: oNotice;
 		text:
 			"Arboreus Data Modifier (C) 2026<br/>
-			version 1.0.0<br/>
-			<a href='https://github.com/ArboreusSystems/arboreus_modifier_mobile' style='color: " +
-			AColors.mGetString("WhiteDark") + ";'>Sources on Github</a>";
+			Version " + AApplication.mVersionFull() + "<br/>
+			<a href='https://modifier.arboreus.systems/privacypolicy.txt' style='color: " +
+				AColors.mGetString("WhiteDark") + ";'>Privacy policy</a>";
 		textFormat: Text.RichText;
 		color: AColors.mGetString("WhiteDark");
 		anchors.top: oLabel.bottom;

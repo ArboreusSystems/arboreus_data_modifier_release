@@ -46,7 +46,7 @@ class DMCoreService : public AThreadServiceTemplate {
 		QByteArray mKeyBytes(void);
 		QByteArray mVectorBytes(void);
 		bool mIsPasswordDefined(void);
-		bool mPasswordSet(const QString& inPassword);
+		bool mPasswordSet(QString& inPassword);
 		QString mPasswordGet(void);
 		void mPasswordDelete(void);
 		void mMemoryClear(void);

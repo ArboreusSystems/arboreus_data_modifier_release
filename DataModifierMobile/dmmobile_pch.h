@@ -23,6 +23,7 @@
 #include <QQuickStyle>
 
 // Application includes
+#include <dmmobile_conf.h>
 
 // Constants and defintions
 

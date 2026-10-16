@@ -54,11 +54,15 @@ class DMCore: public AThreadTemplate<DMCoreService> {
 	public slots:
 
 		QVariantMap mIsPasswordDefined(void);
-		QVariantMap mPasswordSet(QString inPassword);
+		QVariantMap mPasswordSet(const QJSValue& inPassword);
+		QVariantMap mPasswordSetHandler(QString& inPassword);
 		QVariantMap mPasswordGet(void);
 		QVariantMap mPasswordDelete(void);
-		QVariantMap mEncodeString(QString inString);
-		QVariantMap mDecodeString(QString inString);
+		QVariantMap mEncodeString(const QJSValue& inString);
+		QVariantMap mEncodeStringHandler(QString& inString);
+		QVariantMap mDecodeString(const QJSValue& inString);
+		QVariantMap mDecodeStringHandler(QString& inString);
+		void mClearOutput(QVariantMap inMap);
 
 		void slInitiated(void);
 

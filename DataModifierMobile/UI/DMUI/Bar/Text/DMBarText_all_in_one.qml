@@ -148,6 +148,20 @@ Rectangle {
 						}
 					}
 				}
+
+				Connections {
+
+					target: Application;
+
+					function onStateChanged(inState) {
+
+						if (inState === Qt.ApplicationHidden || inState === Qt.ApplicationSuspended) {
+							if (ASettings.mGetValue("SwitchScreenClear")) {
+								oTextEdit.text = qsTrId("DM.Data.Default");
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -223,7 +237,7 @@ Rectangle {
 
 					pMouseArea.onClicked: {
 
-						oTextEdit.text = AClipboard.mTextPasteFrom();
+						oTextEdit.text = AClipboard.mTextPaste();
 					}
 				}
 
@@ -249,13 +263,13 @@ Rectangle {
 
 					pMouseArea.onClicked: {
 
-						if (ASettings.mGetValue("ClipboardClear")) {
-							AClipboard.mTextCopySensitiveToAndClear(
+						if (ASettings.mGetValue("SwitchClipboardClear")) {
+							AClipboard.mTextCopyPrivateAndClear(
 								oTextEdit.text,
-								ASettings.mGetValue("ClipboardClearTimeout")
+								ASettings.mGetValue("SwitchClipboardClearTimeout")
 							);
 						} else {
-							AClipboard.mTextCopySensitiveTo(
+							AClipboard.mTextCopyPrivate(
 								oTextEdit.text
 							);
 						}
@@ -271,7 +285,13 @@ Rectangle {
 
 					pMouseArea.onClicked: {
 
-						oRoot.forceActiveFocus();
+						if (Qt.platform.os === "ios") {
+							Qt.callLater(() => {
+								oRoot.forceActiveFocus();
+							})
+						} else {
+							oRoot.forceActiveFocus();
+						}
 					}
 				}
 			}

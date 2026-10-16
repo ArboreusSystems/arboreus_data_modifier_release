@@ -68,6 +68,5 @@ DMButtonText_splitted {
 		anchors.left: parent.left;
 		anchors.leftMargin: parent.height * 0.88;
 		anchors.verticalCenter: parent.verticalCenter;
-		anchors.verticalCenterOffset: -1;
 	}
 }

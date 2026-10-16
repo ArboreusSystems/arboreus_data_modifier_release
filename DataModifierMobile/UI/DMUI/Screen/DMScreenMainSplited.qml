@@ -223,19 +223,19 @@ Item {
 
 			pButtonPaste.pMouseArea.onClicked: {
 
-				oTextFieldEncrypted.mSetText(AClipboard.mTextPasteFrom());
+				oTextFieldEncrypted.mSetText(AClipboard.mTextPaste());
 				oRoot.pScreen.mShowNotification(qsTrId("DM.Encrypted.Pasted"),"Regular");
 			}
 
 			pButtonCopy.pMouseArea.onClicked: {
 
-				if (ASettings.mGetValue("ClipboardClear")) {
-					AClipboard.mTextCopySensitiveToAndClear(
+				if (ASettings.mGetValue("SwitchClipboardClear")) {
+					AClipboard.mTextCopyPrivateAndClear(
 						oTextFieldEncrypted.pTextRaw,
-						ASettings.mGetValue("ClipboardClearTimeout")
+						ASettings.mGetValue("SwitchClipboardClearTimeout")
 					);
 				} else {
-					AClipboard.mTextCopySensitiveTo(
+					AClipboard.mTextCopyPrivate(
 						oTextFieldEncrypted.pTextRaw
 					);
 				}
@@ -279,7 +279,7 @@ Item {
 
 			pButtonPaste.pMouseArea.onClicked: {
 
-				oTextFieldDecrypted.pTextEdit.text = AClipboard.mTextPasteFrom();
+				oTextFieldDecrypted.pTextEdit.text = AClipboard.mTextPaste();
 				oRoot.pScreen.mShowNotification(qsTrId("DM.Decrypted.Pasted"),"Regular");
 			}
 
@@ -290,13 +290,13 @@ Item {
 
 			pButtonCopy.pMouseArea.onClicked: {
 
-				if (ASettings.mGetValue("ClipboardClear")) {
-					AClipboard.mTextCopySensitiveToAndClear(
+				if (ASettings.mGetValue("SwitchClipboardClear")) {
+					AClipboard.mTextCopyPrivateAndClear(
 						oTextFieldDecrypted.pTextEdit.text,
-						ASettings.mGetValue("ClipboardClearTimeout")
+						ASettings.mGetValue("SwitchClipboardClearTimeout")
 					);
 				} else {
-					AClipboard.mTextCopySensitiveTo(
+					AClipboard.mTextCopyPrivate(
 						oTextFieldDecrypted.pTextEdit.text
 					);
 				}
@@ -306,7 +306,13 @@ Item {
 
 			pButtonOk.pMouseArea.onClicked: {
 
-				oRoot.forceActiveFocus();
+				if (Qt.platform.os === "ios") {
+					Qt.callLater(() => {
+						oRoot.forceActiveFocus();
+					})
+				} else {
+					oRoot.forceActiveFocus();
+				}
 			}
 		}
 	}
@@ -378,7 +384,7 @@ Item {
 
 				oRoot.forceActiveFocus();
 
-				var oEncryptedString = AClipboard.mTextPasteFrom();
+				var oEncryptedString = AClipboard.mTextPaste();
 				if (oButtonBlockDecrypted.mDecrypt(oEncryptedString)) {
 					oTextFieldEncrypted.mSetText(oEncryptedString);
 					oMenuAction.mSelectDecrypted();
@@ -406,6 +412,8 @@ Item {
 				var oDecryptedObject = DMCore.mDecodeString(inEncryptedString);
 				if (oDecryptedObject.pStatus === AEnumStatus.Ok) {
 					oTextFieldDecrypted.pTextEdit.text = oDecryptedObject.pValue;
+					DMCore.mClearOutput(oDecryptedObject);
+					oDecryptedObject = {};
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Data.Decrypted"),"Regular");
 					console.debug("Text decrypted");
 					return true;
@@ -460,12 +468,12 @@ Item {
 					oMenuAction.mSelectEncrypted();
 
 					if (ASettings.mGetValue("ClipboardClear")) {
-						AClipboard.mTextCopySensitiveToAndClear(
+						AClipboard.mTextCopyPrivateAndClear(
 							oTextFieldEncrypted.pTextRaw,
 							ASettings.mGetValue("ClipboardClearTimeout")
 						);
 					} else {
-						AClipboard.mTextCopySensitiveTo(
+						AClipboard.mTextCopyPrivate(
 							oTextFieldEncrypted.pTextRaw
 						);
 					}
@@ -496,6 +504,8 @@ Item {
 				var oEncryptedObject = DMCore.mEncodeString(oTextFieldDecrypted.pTextEdit.text);
 				if (oEncryptedObject.pStatus === AEnumStatus.Ok) {
 					oTextFieldEncrypted.mSetText(oEncryptedObject.pValue);
+					DMCore.mClearOutput(oEncryptedObject);
+					oEncryptedObject = {};
 					oRoot.pScreen.mShowNotification(qsTrId("DM.Data.Encrypted"),"Regular");
 					console.debug("Text encrypted");
 					return true;

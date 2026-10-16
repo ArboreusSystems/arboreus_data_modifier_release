@@ -99,6 +99,22 @@ void DMSettingsDriver::mSetValue(QString inKey, QVariant inValue) {
 	Doc.
 */
 
+void DMSettingsDriver::mDeleteByKey(QString inKey) {
+
+	pSettings.remove(inKey);
+	_A_DEBUG << "Deleted by key" << inKey;
+
+	mWriteSettings();
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
 void DMSettingsDriver::mEnsureDir(QString inPath) {
 
 	QString oPath = inPath + "/" + pSubFolder;
@@ -127,6 +143,7 @@ void DMSettingsDriver::mLoadSettings(QString inPath) {
 		AJsonFileReply oJsonReply = AJson::mFromFile(pPath);
 		if (oJsonReply.Status == _A_ENUM_STATUS::Ok) {
 			pSettings = oJsonReply.Json.toVariantMap();
+			mSynchronize();
 			_A_DEBUG << "Loaded settings from JSON:" << pPath;
 		} else {
 			_A_CRITICAL << "Can't load settings from JSON:" << pPath;
@@ -172,10 +189,43 @@ QVariantMap DMSettingsDriver::mDefaultSettings(void) {
 		{"UISchema",1},
 		{"SwitchEncryptToClipbard",false},
 		{"SwitchDecryptFromClipbard",false},
-		{"Locale","en"},
-		{"ClipboardClear",false},
-		{"ClipboardClearTimeout",30},
+		{"SwitchScreenPrivacy",true},
+		{"SwitchScreenClear",false},
+		{"SwitchPasswordClear",false},
+		{"SwitchClipboardClear",true},
+		{"SwitchClipboardClearTimeout",30},
+		{"SwitchInputTextHelpers",false},
+		{"SwitchContextMenuProhibited",true},
+		{"Locale","en"}
 	};
 
 	return oOutput;
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+void DMSettingsDriver::mSynchronize(void) {
+
+	QVariantMap oOutput = {};
+	QString oUndefined = "UndefinedSettings";
+	QVariantMap oDefault = mDefaultSettings();
+	bool oWrite = false;
+
+	for (auto i = oDefault.cbegin(), end = oDefault.cend(); i != end; ++i) {
+		QVariant oValue = pSettings.value(i.key(),oUndefined);
+		if (oValue == QVariant(oUndefined)) {
+			oOutput.insert(i.key(),i.value());
+		} else {
+			oOutput.insert(i.key(),oValue);
+		}
+	}
+
+	pSettings = oOutput;
+	mWriteSettings();
 }

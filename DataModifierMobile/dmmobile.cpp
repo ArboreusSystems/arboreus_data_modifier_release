@@ -25,6 +25,7 @@ using namespace DM;
 QObject* gConfig = nullptr;
 QGuiApplication* gGuiApplication = nullptr;
 QQmlApplicationEngine* gApplicationEngine = nullptr;
+DMBackend* gBackend = nullptr;
 extern ALogger* gLogger;
 extern bool gLoggerStopping;
 
@@ -52,7 +53,6 @@ static void __attribute__((unused)) fMain_MessageHandler(
 // Qt Quick Application
 int main(int inCounter, char* inArguments[]) {
 
-	qputenv("QT_DISABLE_SHADER_DISK_CACHE","1");
 	qputenv("QSG_RENDER_LOOP","basic");
 
 	QGuiApplication oGUIApplicationObject(inCounter,inArguments);
@@ -76,6 +76,7 @@ int main(int inCounter, char* inArguments[]) {
 	QEventLoop* oEventLoop = new QEventLoop();
 
 	DMBackend* oBackend = &DMBackend::mInstance();
+	gBackend = oBackend;
 	QObject::connect(
 		oController,&AThreadObjectControllerTemplate::sgRun,
 		oBackend,[oBackend,oGuiApplication,oApplicationEngine,oConfig](){

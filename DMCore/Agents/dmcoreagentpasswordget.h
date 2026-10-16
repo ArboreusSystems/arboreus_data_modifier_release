@@ -42,7 +42,7 @@ class DMCoreAgentPasswordGet : public AThreadAgentTemplate {
 
 	public:
 
-		AOutputQVariant pOutput = AOutputQVariant();
+		AOutputQVariant pOutput;
 		DMCoreService* pService = nullptr;
 
 		explicit DMCoreAgentPasswordGet(QObject* parent = nullptr);

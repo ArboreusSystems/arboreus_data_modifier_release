@@ -33,6 +33,7 @@ DMBackend::DMBackend(QObject* parent) : QObject(parent) {
 	pApplication = new AApplication(this);
 	pLogger = &ALogger::mInstance();
 	pSettings = new ASettings(this);
+	pPrivacy = new APrivacy(this);
 	pUIHandler = new AUIHandler(this);
 	pDevice = new ADevice(this);
 	pClipboard = new AClipboard(this);
@@ -103,6 +104,7 @@ void DMBackend::mInit(
 	mInitApplication();
 	mInitLogger();
 	mInitSettings();
+	mInitPrivacy();
 	mInitUIHandler();
 	mInitCore();
 	mInitDevice();
@@ -243,6 +245,41 @@ void DMBackend::mInitSettings(void) {
 	QObject::disconnect(pSettings,nullptr,oEventLoop,nullptr);
 
 	pRootContext->setContextProperty("ASettings",pSettings);
+}
+
+
+// -----------
+/*!
+	\fn
+
+	Doc.
+*/
+
+void DMBackend::mInitPrivacy(void) {
+
+	AThreadObjectControllerTemplate* oController = new AThreadObjectControllerTemplate();
+	QEventLoop* oEventLoop = new QEventLoop();
+
+	QObject::connect(
+		oController,&AThreadObjectControllerTemplate::sgRun,
+		pPrivacy,[this](){
+			pPrivacy->mInit();
+		},
+		Qt::QueuedConnection
+	);
+	QObject::connect(
+		pPrivacy,&APrivacy::sgInitiated,
+		oEventLoop,&QEventLoop::quit,
+		Qt::QueuedConnection
+	);
+
+	emit oController->sgRun();
+	oEventLoop->exec();
+
+	QObject::disconnect(oController,nullptr,nullptr,nullptr);
+	QObject::disconnect(pPrivacy,nullptr,oEventLoop,nullptr);
+
+	pRootContext->setContextProperty("APrivacy",pPrivacy);
 }
 
 

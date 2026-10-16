@@ -102,6 +102,16 @@ set(${A_PREFIX}_SOURCES_RESOURCES_IMAGES
 	Images/Button/TextEdit/DM_ButtonTextEditOk.svg
 	Images/Button/TextEdit/DM_ButtonTextEditPaste.svg
 	Images/Button/TextEdit/DM_ButtonTextEditWrite.svg
+	Images/Button/TextEdit/DM_ButtonTextEditMenuSign_purple.svg
+	Images/Button/TextEdit/DM_ButtonTextEditCopy_purple.svg
+	Images/Button/TextEdit/DM_ButtonTextEditDelete_purple.svg
+	Images/Button/TextEdit/DM_ButtonTextEditOk_purple.svg
+	Images/Button/TextEdit/DM_ButtonTextEditPaste_purple.svg
+	Images/Button/TextEdit/DM_ButtonTextEditWrite_purple.svg
+	Images/Button/TextEdit/DM_ButtonTextEditCopy_blue.svg
+	Images/Button/TextEdit/DM_ButtonTextEditPaste_blue.svg
+	Images/Button/TextEdit/DM_ButtonTextEditDelete_blue.svg
+	Images/Button/TextEdit/DM_ButtonTextEditMenuSign_blue.svg
 	Images/Elements/DM_SignFooterPassword_active.svg
 	Images/Elements/DM_SignFooterPassword_hover.svg
 	Images/Elements/DM_SignPasswordMenu.svg

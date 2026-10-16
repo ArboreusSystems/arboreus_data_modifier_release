@@ -28,9 +28,10 @@
 #include <dmcoreservice.h>
 #include <dmcoredefinitions.h>
 
-// Namesapces
-
 // Constants and definitions
+
+// Global variable
+static QString gDMCoreAgentEncodeString_EmptyString = QString("");
 
 // Namesapces
 namespace ARB {
@@ -42,8 +43,8 @@ class DMCoreAgentEncodeString : public AThreadAgentTemplate {
 
 	public:
 
-		QString pString = "";
-		AOutputQVariant pOutput = AOutputQVariant();
+		QString& pString = gDMCoreAgentEncodeString_EmptyString;
+		AOutputQVariant pOutput;
 		DMCoreService* pService = nullptr;
 
 		explicit DMCoreAgentEncodeString(QObject* parent = nullptr);
@@ -52,6 +53,10 @@ class DMCoreAgentEncodeString : public AThreadAgentTemplate {
 	public slots:
 
 		void slRun(void);
+
+	private:
+
+		void mClear(void);
 };
 
 } // namespace ARB

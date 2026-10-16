@@ -114,7 +114,7 @@ endif()
 ## ----------------------------------------
 ## Qt settings
 
-find_package(Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Core Qml)
 
 qt_standard_project_setup(REQUIRES 6.8)
 qt_add_library(${A_NAME_TARGET} STATIC ${${A_PREFIX}_SOURCES})
@@ -122,6 +122,7 @@ qt_add_library(${A_NAME_TARGET} STATIC ${${A_PREFIX}_SOURCES})
 target_link_libraries(${A_NAME_TARGET}
 	PRIVATE
 		Qt6::Core
+		Qt6::Qml
 		ALogger
 		ATemplates
 		AOpenSSL

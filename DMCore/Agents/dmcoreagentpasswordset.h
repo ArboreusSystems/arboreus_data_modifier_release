@@ -28,9 +28,10 @@
 #include <dmcoreservice.h>
 #include <dmcoredefinitions.h>
 
-// Namesapces
-
 // Constants and definitions
+
+// Global variable
+static QString gDMCoreAgentPasswordSet_EmptyPassword = QString("");
 
 // Namesapces
 namespace ARB {
@@ -42,8 +43,8 @@ class DMCoreAgentPasswordSet : public AThreadAgentTemplate {
 
 	public:
 
-		QString pPassword = "";
-		AOutputQVariant pOutput = AOutputQVariant();
+		QString& pPassword = gDMCoreAgentPasswordSet_EmptyPassword;
+		AOutputQVariant pOutput;
 		DMCoreService* pService = nullptr;
 
 		explicit DMCoreAgentPasswordSet(QObject* parent = nullptr);
@@ -52,6 +53,10 @@ class DMCoreAgentPasswordSet : public AThreadAgentTemplate {
 	public slots:
 
 		void slRun(void);
+
+	private:
+
+		void mClear(void);
 };
 
 } // namespace ARB

@@ -27,6 +27,7 @@ Item {
 	required property string pImageSourceHover;
 	property alias pMouseArea: oButton.pMouseArea;
 	property alias pID: oButton.pID;
+	property string pType: "Universal";
 
 	id: oRoot;
 	height: oColumn.implicitHeight;
@@ -43,7 +44,16 @@ Item {
 
 				target: oButton;
 				color: AColors.mGetString("WhiteLight");
-				border.color: AColors.mGetString("GreyDarkest");
+				border.color: {
+
+					if (oRoot.pType === "Universal") {
+						AColors.mGetString("GreyDarkest");
+					} else if (oRoot.pType === "Decrypted") {
+						AColors.mGetString("Purple");
+					} else if (oRoot.pType === "Encrypted") {
+						AColors.mGetString("Blue");
+					}
+				}
 			}
 
 			PropertyChanges {
@@ -120,10 +130,20 @@ Item {
 				id: oSignImage;
 				width: parent.width;
 				height: width * 1.31;
-				source: "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditMenuSign.svg";
 				fillMode: Image.PreserveAspectFit;
 				anchors.horizontalCenter: parent.horizontalCenter;
 				anchors.bottom: parent.bottom;
+
+				source: {
+
+					if (oRoot.pType === "Universal") {
+						return "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditMenuSign.svg";
+					} else if (oRoot.pType === "Decrypted") {
+						return "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditMenuSign_purple.svg";
+					} else if (oRoot.pType === "Encrypted") {
+						return "qrc:/Resources/Images/Button/TextEdit/DM_ButtonTextEditMenuSign_blue.svg";
+					}
+				}
 			}
 		}
 	}
