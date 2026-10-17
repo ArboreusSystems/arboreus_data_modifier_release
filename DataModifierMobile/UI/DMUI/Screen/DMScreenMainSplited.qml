@@ -317,7 +317,7 @@ Item {
 		}
 	}
 
-	Rectangle {
+	Item {
 
 		property int pTopBarHeight: 24;
 		property int pTopBarLineHeight: 2;
@@ -328,12 +328,21 @@ Item {
 		anchors.bottom: parent.bottom;
 		anchors.bottomMargin: oBarPassword.height;
 
-		gradient: Gradient {
+		Rectangle {
+
+			id: oMenuActionBackground;
+			width: parent.width;
+			height: parent.height - oSignAction.height;
+			anchors.top: parent.top;
+			anchors.horizontalCenter: parent.horizontalCenter;
+
+			gradient: Gradient {
 
 			orientation: Gradient.Vertical;
 
-			GradientStop {position: 0.0; color: AColors.mGetString("WhiteLight");}
-			GradientStop {position: 1.0; color: AColors.mGetString("WhiteDark");}
+				GradientStop {position: 0.0; color: AColors.mGetString("WhiteLight");}
+				GradientStop {position: 1.0; color: AColors.mGetString("WhiteDark");}
+			}
 		}
 
 		Component.onCompleted: {
@@ -638,9 +647,10 @@ Item {
 		function onSgKeyboardVisible(inVisibility) {
 
 			if (inVisibility) {
-
+				oSignAction.visible = false;
 			} else {
 				if (oBarPassword.pTextInput.activeFocus) oBarPassword.forceActiveFocus();
+				oSignAction.visible = true;
 			}
 		}
 	}

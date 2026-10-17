@@ -28,6 +28,7 @@ ASignActionRandomColors {
 	// Fix Qt iOS bug with 0 in parent.width
 	// Using global window object width
 	width: Qt.platform.os === "ios" ? oMainWindow.width : parent.width;
+	pElementWidth: 7;
 
 	pColors: [
 		"Blue","BlueDark",

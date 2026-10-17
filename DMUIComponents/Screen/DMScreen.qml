@@ -35,7 +35,6 @@ AScreen {
 		width: parent.width;
 		height: oNotification.contentHeight * 1.13;
 		anchors.top: parent.top;
-		// anchors.topMargin: oRoot.height * 0.1;
 		anchors.horizontalCenter: parent.horizontalCenter;
 		visible: false;
 		opacity: 0.0;

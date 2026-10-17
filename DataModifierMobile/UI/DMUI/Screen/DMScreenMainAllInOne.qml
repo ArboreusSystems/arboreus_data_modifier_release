@@ -68,7 +68,7 @@ Item {
 		}
 	}
 
-	Rectangle {
+	Item {
 
 		property int pTopBarHeight: 8;
 		property int pTopBarLineHeight: 2;
@@ -78,14 +78,22 @@ Item {
 		height: oBarPassword.height * 2.35;
 		anchors.bottom: parent.bottom;
 		anchors.bottomMargin: oBarPassword.height;
-		color: AColors.mGetString("GreyLight");
 
-		gradient: Gradient {
+		Rectangle {
+
+			id: oMenuActionBackground;
+			width: parent.width;
+			height: parent.height - oSignAction.height;
+			anchors.top: parent.top;
+			anchors.horizontalCenter: parent.horizontalCenter;
+
+			gradient: Gradient {
 
 			orientation: Gradient.Vertical;
 
-			GradientStop {position: 0.0; color: AColors.mGetString("WhiteLight");}
-			GradientStop {position: 1.0; color: AColors.mGetString("WhiteDark");}
+				GradientStop {position: 0.0; color: AColors.mGetString("WhiteLight");}
+				GradientStop {position: 1.0; color: AColors.mGetString("WhiteDark");}
+			}
 		}
 
 		DMButtonDecrypt_all_in_one {
@@ -306,6 +314,7 @@ Item {
 		id: oSignAction;
 		anchors.bottom: parent.bottom;
 		anchors.horizontalCenter: parent.horizontalCenter;
+		visible: true;
 
 		Connections {
 
@@ -314,6 +323,20 @@ Item {
 			function onSgDeclareAction(inAction) {
 
 				if (oStackView.currentItem === oRoot.pScreen) oSignAction.mRegenerate();
+			}
+		}
+
+		Connections {
+
+			target: oMainWindow;
+
+			function onSgKeyboardVisible(inVisibility) {
+
+				if (inVisibility) {
+					oSignAction.visible = false;
+				} else {
+					oSignAction.visible = true;
+				}
 			}
 		}
 	}

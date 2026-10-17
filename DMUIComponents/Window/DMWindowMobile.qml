@@ -28,7 +28,7 @@ AWindowMobileSafeArea {
 	id: oRoot;
 	pObjectName: "MainWindow";
 	pColorBackgroundScreen: AColors.mGetString("Black");
-	pColorBackgroundContent: AColors.mGetString("White");
+	pColorBackgroundContent: AColors.mTransparent();
 	width: ADevice.mType() === AEnumDeviceType.Desktop ? AUIConfig.mDesktopUIWidth() : Screen.width;
 	height: ADevice.mType() === AEnumDeviceType.Desktop ? AUIConfig.mDesktopUIHeight() : Screen.height;
 }
