@@ -119,17 +119,23 @@ class DMConfig :
 
 	private:
 
-		QString pAApplicationConfig_Application_VersionFull = QString(_DM_VERSION_FULL);
-		QString pAApplicationConfig_Application_VersionShort = QString(_DM_VERSION_SHORT);
-		QString pAApplicationConfig_Application_VersionCode = QString(_DM_VERSION_CODE);
+		QString pAApplicationConfig_Application_VersionFull = QStringLiteral(_DM_VERSION_FULL);
+		QString pAApplicationConfig_Application_VersionShort = QStringLiteral(_DM_VERSION_SHORT);
+		QString pAApplicationConfig_Application_VersionCode = QStringLiteral(_DM_VERSION_CODE);
 		QThread::Priority pAApplicationConfig_Application_ThreadPriority = QThread::Priority::LowPriority;
-		QString pAAplication_Application_Name = "DataModifier";
+		QString pAAplication_Application_Name = QStringLiteral("DataModifier");
 
 		int pAApplicationConfig_Heartbeat_DefaultTime = 1000;
 		bool pAApplicationConfig_Heartbeat_DefaultAutostart = false;
-		QVariantList pAApplicationConfig_Translator_LocaleList = {"en","es","pt","ru","fr"};
-		QString pAApplicationConfig_Translator_LocaleDefault = "en";
-		QString pAApplicationConfig_Translator_ResourceName = ":/Translations/DataModifier_%1.qm";
+		QVariantList pAApplicationConfig_Translator_LocaleList = {
+			QStringLiteral("en"),
+			QStringLiteral("es"),
+			QStringLiteral("pt"),
+			QStringLiteral("ru"),
+			QStringLiteral("fr")
+		};
+		QString pAApplicationConfig_Translator_LocaleDefault = QStringLiteral("en");
+		QString pAApplicationConfig_Translator_ResourceName = QStringLiteral(":/Translations/DataModifier_%1.qm");
 
 
 	// ----------------------------

@@ -107,14 +107,28 @@ Rectangle {
 					oRoot.pTextDefault = qsTrId("DM.Password.Default");
 					oPasswordInput.pTextInput.text = qsTrId("DM.Password.Default");
 				} else {
+
 					var oPasswordSet = DMCore.mPasswordSet(oPasswordInput.pTextInput.text);
 					if (oPasswordSet.pStatus === AEnumStatus.Ok) {
-						oPasswordInput.pTextInput.text = oRoot.pPasswordMask;
+
+						var oMaskLength = oPasswordInput.pTextInput.text.length;
+						if (ASettings.mGetValue("SwitchRandomPasswordMaskLength")) {
+							var oMaskLengthRandom = Math.floor(Math.random() * (12 - 5 + 1)) + 5;
+							if (oMaskLengthRandom === oMaskLength) {
+								var oMaskLengthRandomSalt = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+								oMaskLength = oMaskLengthRandom + oMaskLengthRandomSalt;
+							} else {
+								oMaskLength = oMaskLengthRandom
+							}
+						}
+						oPasswordInput.pTextInput.text = "*".repeat(oMaskLength);
+
 						DMCore.mClearOutput(oPasswordSet);
 						oPasswordSet = {};
 						oButtonPassword.state = "Active";
 						oButtonPassword.pAccept = false;
 						console.error("Set new password");
+
 					} else {
 						oRoot.pScreen.mShowNotification(qsTrId("DM.Error.SomethingWentWrong"),"Error");
 						console.error("Can't set new password");

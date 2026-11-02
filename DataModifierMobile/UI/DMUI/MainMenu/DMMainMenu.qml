@@ -119,6 +119,24 @@ Item {
 
 			DMMenuSwitch {
 
+				id: oSwitchRandomPasswordMaskLength;
+				pID: "SwitchRandomPasswordMaskLength"
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.SwitchRandomPasswordmaskLength.label");
+				pNotice: qsTrId("DM.MainMenu.SwitchRandomPasswordmaskLength.notice");
+			}
+
+			DMMenuSwitch {
+
+				id: oSwitchPanicButton;
+				pID: "SwitchPanicButton"
+				pDeclareAction: true;
+				pLabel: qsTrId("DM.MainMenu.SwitchPanicButton.label");
+				pNotice: qsTrId("DM.MainMenu.SwitchPanicButton.notice");
+			}
+
+			DMMenuSwitch {
+
 				id: oSwitchScreenPrivacy;
 				pID: "SwitchScreenPrivacy";
 				pDeclareAction: true;

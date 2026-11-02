@@ -142,7 +142,7 @@ void DMLoggerAgentDefault::mWriteToConsole(ALoggerMessageModel inMessage) {
 			__android_log_print(
 				ANDROID_LOG_UNKNOWN,_A_LOGGER_DEFAULT_STRING_UNDEFINED
 				"%s %llu %s %s [%s]:[%s]:[%u]\n",
-				inMessage.Author,inMessage.Time,inMessage.ThreadID.constData(),
+				inMessage.Author.to,inMessage.Time,inMessage.ThreadID.constData(),
 				inMessage.Message.constData(),inMessage.Function,inMessage.File,inMessage.Line
 			);
 			break;

@@ -110,7 +110,19 @@ Item {
 
 			pMouseArea.onClicked: {
 
-				oStackView.push(oScreenMenu);
+				if (ASettings.mGetValue("SwitchPanicButton")) {
+					AApplication.mQuit();
+				} else {
+					oStackView.push(oScreenMenu);
+				}
+			}
+
+			pMouseArea.onPressAndHold: {
+
+				if (ASettings.mGetValue("SwitchPanicButton")) {
+					oStackView.push(oScreenMenu);
+					oRoot.state = "Active";
+				}
 			}
 
 			Rectangle {

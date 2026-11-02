@@ -31,7 +31,7 @@
 // Constants and definitions
 
 // Global variable
-static QString gDMCoreAgentEncodeString_EmptyString = QString("");
+static QString gDMCoreAgentEncodeString_EmptyString = QString();
 
 // Namesapces
 namespace ARB {

@@ -56,8 +56,8 @@ class DMSettingsDriver :
 	private:
 
 		QVariantMap pSettings = {};
-		QString pPath = "NoDefinedPath";
-		QString pSubFolder = "Settings";
+		QString pPath = QStringLiteral("NoDefinedPath");
+		QString pSubFolder = QStringLiteral("Settings");
 
 		void mEnsureDir(QString inPath);
 		void mLoadSettings(QString inPath);

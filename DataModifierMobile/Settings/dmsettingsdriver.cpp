@@ -117,7 +117,7 @@ void DMSettingsDriver::mDeleteByKey(QString inKey) {
 
 void DMSettingsDriver::mEnsureDir(QString inPath) {
 
-	QString oPath = inPath + "/" + pSubFolder;
+	QString oPath = inPath + QStringLiteral("/") + pSubFolder;
 	if (ADir::mEnsure(oPath)) {
 		_A_DEBUG << "Ensured path:" << oPath;
 	} else {
@@ -136,7 +136,7 @@ void DMSettingsDriver::mEnsureDir(QString inPath) {
 
 void DMSettingsDriver::mLoadSettings(QString inPath) {
 
-	pPath = inPath + "/" + pSubFolder + "/settings.json";
+	pPath = inPath + QStringLiteral("/") + pSubFolder + QStringLiteral("/settings.json");
 
 	if (AFile::mExist(pPath)) {
 
@@ -186,17 +186,19 @@ void DMSettingsDriver::mWriteSettings(void) {
 QVariantMap DMSettingsDriver::mDefaultSettings(void) {
 
 	QVariantMap oOutput = {
-		{"UISchema",1},
-		{"SwitchEncryptToClipbard",false},
-		{"SwitchDecryptFromClipbard",false},
-		{"SwitchScreenPrivacy",true},
-		{"SwitchScreenClear",false},
-		{"SwitchPasswordClear",false},
-		{"SwitchClipboardClear",true},
-		{"SwitchClipboardClearTimeout",30},
-		{"SwitchInputTextHelpers",false},
-		{"SwitchContextMenuProhibited",true},
-		{"Locale","en"}
+		{QLatin1StringView("UISchema"),1},
+		{QLatin1StringView("SwitchEncryptToClipbard"),false},
+		{QLatin1StringView("SwitchDecryptFromClipbard"),false},
+		{QLatin1StringView("SwitchScreenPrivacy"),true},
+		{QLatin1StringView("SwitchScreenClear"),false},
+		{QLatin1StringView("SwitchPasswordClear"),false},
+		{QLatin1StringView("SwitchClipboardClear"),true},
+		{QLatin1StringView("SwitchClipboardClearTimeout"),30},
+		{QLatin1StringView("SwitchInputTextHelpers"),false},
+		{QLatin1StringView("SwitchContextMenuProhibited"),true},
+		{QLatin1StringView("SwitchRandomPasswordMaskLength"),false},
+		{QLatin1StringView("SwitchPanicButton"),false},
+		{QLatin1StringView("Locale"),QLatin1StringView("en")}
 	};
 
 	return oOutput;
@@ -213,7 +215,7 @@ QVariantMap DMSettingsDriver::mDefaultSettings(void) {
 void DMSettingsDriver::mSynchronize(void) {
 
 	QVariantMap oOutput = {};
-	QString oUndefined = "UndefinedSettings";
+	QString oUndefined = QStringLiteral("UndefinedSettings");
 	QVariantMap oDefault = mDefaultSettings();
 	bool oWrite = false;
 

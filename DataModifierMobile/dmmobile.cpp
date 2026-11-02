@@ -59,7 +59,7 @@ int main(int inCounter, char* inArguments[]) {
 	QGuiApplication* oGuiApplication = &oGUIApplicationObject;
 	gGuiApplication = oGuiApplication;
 
-	QQuickStyle::setStyle("Basic");
+	QQuickStyle::setStyle(QLatin1StringView("Basic"));
 
 	QQmlApplicationEngine oApplicationEngineObject;
 	QQmlApplicationEngine* oApplicationEngine = &oApplicationEngineObject;

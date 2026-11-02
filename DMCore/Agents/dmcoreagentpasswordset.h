@@ -31,7 +31,7 @@
 // Constants and definitions
 
 // Global variable
-static QString gDMCoreAgentPasswordSet_EmptyPassword = QString("");
+static QString gDMCoreAgentPasswordSet_EmptyPassword = QString();
 
 // Namesapces
 namespace ARB {

@@ -93,7 +93,7 @@ void DMBackend::mInit(
 	}
 	if (inRootContext) {
 		pRootContext = inRootContext;
-		pRootContext->setContextProperty("DMBackend",this);
+		pRootContext->setContextProperty(QLatin1StringView("DMBackend"),this);
 	}
 	if (inGlobalConfig) {
 		pGlobalConfig = inGlobalConfig;
@@ -163,9 +163,9 @@ void DMBackend::mInitApplication(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pApplication,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("AApplication",pApplication);
-	pRootContext->setContextProperty("AVariables",pApplication->pVariables);
-	pRootContext->setContextProperty("ATranslator",pApplication->pTranslator);
+	pRootContext->setContextProperty(QLatin1StringView("AApplication"),pApplication);
+	pRootContext->setContextProperty(QLatin1StringView("AVariables"),pApplication->pVariables);
+	pRootContext->setContextProperty(QLatin1StringView("ATranslator"),pApplication->pTranslator);
 }
 
 
@@ -203,7 +203,7 @@ void DMBackend::mInitLogger(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pLogger,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("ALogger",pLogger);
+	pRootContext->setContextProperty(QLatin1StringView("ALogger"),pLogger);
 }
 
 
@@ -227,7 +227,7 @@ void DMBackend::mInitSettings(void) {
 			);
 			pSettings->mInit(oDriver);
 			pApplication->pTranslator->mLocaleSet(
-				qvariant_cast<QString>(pSettings->mGetValue("Locale"))
+				qvariant_cast<QString>(pSettings->mGetValue(QLatin1StringView("Locale")))
 			);
 		},
 		Qt::QueuedConnection
@@ -244,7 +244,7 @@ void DMBackend::mInitSettings(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pSettings,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("ASettings",pSettings);
+	pRootContext->setContextProperty(QLatin1StringView("ASettings"),pSettings);
 }
 
 
@@ -279,7 +279,7 @@ void DMBackend::mInitPrivacy(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pPrivacy,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("APrivacy",pPrivacy);
+	pRootContext->setContextProperty(QLatin1StringView("APrivacy"),pPrivacy);
 }
 
 
@@ -314,10 +314,10 @@ void DMBackend::mInitUIHandler(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pUIHandler,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("AUIHandler",pUIHandler);
-	pRootContext->setContextProperty("AUIConfig",pUIHandler->pUIConfig);
-	pRootContext->setContextProperty("AColors",pUIHandler->pColors);
-	pRootContext->setContextProperty("AFonts",pUIHandler->pFonts);
+	pRootContext->setContextProperty(QLatin1StringView("AUIHandler"),pUIHandler);
+	pRootContext->setContextProperty(QLatin1StringView("AUIConfig"),pUIHandler->pUIConfig);
+	pRootContext->setContextProperty(QLatin1StringView("AColors"),pUIHandler->pColors);
+	pRootContext->setContextProperty(QLatin1StringView("AFonts"),pUIHandler->pFonts);
 }
 
 
@@ -352,7 +352,7 @@ void DMBackend::mInitCore(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pCore,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("DMCore",pCore);
+	pRootContext->setContextProperty(QLatin1StringView("DMCore"),pCore);
 }
 
 
@@ -387,8 +387,8 @@ void DMBackend::mInitDevice(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pDevice,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("ADevice",pDevice);
-	pRootContext->setContextProperty("AKeyboard",pDevice->pKeyboard);
+	pRootContext->setContextProperty(QLatin1StringView("ADevice"),pDevice);
+	pRootContext->setContextProperty(QLatin1StringView("AKeyboard"),pDevice->pKeyboard);
 }
 
 
@@ -423,5 +423,5 @@ void DMBackend::mInitClipboard(void) {
 	QObject::disconnect(oController,nullptr,nullptr,nullptr);
 	QObject::disconnect(pClipboard,nullptr,oEventLoop,nullptr);
 
-	pRootContext->setContextProperty("AClipboard",pClipboard);
+	pRootContext->setContextProperty(QLatin1StringView("AClipboard"),pClipboard);
 }

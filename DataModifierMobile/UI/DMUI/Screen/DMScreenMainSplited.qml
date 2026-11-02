@@ -148,8 +148,11 @@ Item {
 	Rectangle {
 
 		id: oGradientWrapper;
+		height: parent.height - oSignAction.height;
+		anchors.top: parent.top;
+		anchors.left: parent.left;
+		anchors.right: parent.right;
 		visible: false;
-		anchors.fill: parent;
 
 		gradient: Gradient {
 
@@ -328,6 +331,11 @@ Item {
 		anchors.bottom: parent.bottom;
 		anchors.bottomMargin: oBarPassword.height;
 
+		Component.onCompleted: {
+
+			oMenuAction.mSelectDecrypted();
+		}
+
 		Rectangle {
 
 			id: oMenuActionBackground;
@@ -343,11 +351,6 @@ Item {
 				GradientStop {position: 0.0; color: AColors.mGetString("WhiteLight");}
 				GradientStop {position: 1.0; color: AColors.mGetString("WhiteDark");}
 			}
-		}
-
-		Component.onCompleted: {
-
-			oMenuAction.mSelectDecrypted();
 		}
 
 		DMBarTextMenu_splitted {

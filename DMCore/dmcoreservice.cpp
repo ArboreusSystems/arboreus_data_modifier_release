@@ -161,7 +161,7 @@ bool DMCoreService::mPasswordSet(QString& inPassword) {
 
 	if (inPassword.isEmpty()) return false;
 
-	const int oPassLength = inPassword.length();
+	const int oPassLength = static_cast<const int>(inPassword.length());
 	const size_t oRawByteSize = oPassLength * sizeof(ushort);
 
 	pPassword.resize(oRawByteSize);

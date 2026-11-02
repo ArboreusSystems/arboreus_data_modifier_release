@@ -8,9 +8,9 @@ set(A_NAME_TARGET target_${A_NAME})
 set(A_NAME_APPLICATION ${A_NAME})
 set(A_PREFIX A_${A_NAME_TARGET})
 set(${A_PREFIX}_DIR_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
-set(${A_PREFIX}_VERSION 1.0.7)
+set(${A_PREFIX}_VERSION 1.0.10)
 set(${A_PREFIX}_VERSION_SHORT 1.0)
-set(${A_PREFIX}_VERSION_CODE 10)
+set(${A_PREFIX}_VERSION_CODE 14)
 
 set(${A_PREFIX}_SOURCES_GLOBAL_CONFIG_HEADER ${${A_PREFIX}_DIR_ROOT}/dmmobile_conf.h)
 write_file(${${A_PREFIX}_SOURCES_GLOBAL_CONFIG_HEADER}
@@ -52,6 +52,90 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_AUTORCC ON)
 
 option(A_OPTION_USING_PCH "${A_NAME_TARGET} using PCH support" ON)
+
+add_library(${A_PREFIX}_SECURITY_HARDENING INTERFACE)
+add_library(${A_PREFIX}_SECURITY_HARDENING_ALIAS ALIAS ${A_PREFIX}_SECURITY_HARDENING)
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+
+	if(ANDROID AND CMAKE_ANDROID_ARCH_ABI STREQUAL "armeabi-v7a")
+		set(${A_PREFIX}_IS_ANDROID_ARM32 TRUE)
+	else()
+		set(${A_PREFIX}_IS_ANDROID_ARM32 FALSE)
+	endif()
+
+	set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+	target_compile_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+		-fstack-protector-strong
+		-fPIE
+		-fPIC
+	)
+	if(NOT ${A_PREFIX}_IS_ANDROID_ARM32)
+		target_compile_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE -fstack-clash-protection)
+	endif()
+
+	if(APPLE)
+		target_link_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE -Wl,-pie)
+	elseif(ANDROID)
+		target_link_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE -pie)
+	endif()
+
+	if(${A_PREFIX}_IS_ANDROID_ARM32)
+		target_compile_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+			$<$<CONFIG:Release>:-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2>
+			$<$<CONFIG:MinSizeRel>:-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2>
+		)
+	else()
+		target_compile_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+			$<$<CONFIG:Release>:-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3>
+			$<$<CONFIG:MinSizeRel>:-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3>
+		)
+	endif()
+
+	target_compile_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+		-Werror=format-security
+		-Werror=array-bounds
+		-Werror=vla
+		-Werror=return-type
+		-Wformat
+		-Wformat-nonliteral
+	)
+
+	set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+	set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+
+endif()
+
+target_compile_definitions(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+	QT_NO_CAST_FROM_ASCII
+	QT_NO_CAST_TO_ASCII
+	QT_NO_URL_CAST_FROM_STRING
+	QT_DISABLE_DEPRECATED_BEFORE=0x060000
+	QT_STRICT_ITERATORS
+)
+
+option(ENABLE_ENTERPRISE_SANITIZERS "Inject heavy memory/undefined behavior monitoring" OFF)
+if(ENABLE_ENTERPRISE_SANITIZERS)
+
+	get_property(is_multi_config GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+	if(NOT is_multi_config)
+		if(CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
+			message(FATAL_ERROR "Security Alert: Enterprise Sanitizers cannot be baked into Production/Release packages!")
+		endif()
+	endif()
+
+	if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+		message(STATUS "[SEC] Injecting Address and Undefined Behavior Sanitizers")
+		target_compile_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+			-fsanitize=address,undefined
+			-fno-omit-frame-pointer
+		)
+	target_link_options(${A_PREFIX}_SECURITY_HARDENING INTERFACE
+		-fsanitize=address,undefined
+	)
+endif()
+
+endif()
 
 
 ## ----------------------------------------
@@ -156,7 +240,7 @@ if(IOS)
 
 	set_source_files_properties("${${A_PREFIX}_IOS_DIR_ASSETS}"
 		PROPERTIES
-			MACOSX_PACKAGE_LOCATION "Resources"
+		MACOSX_PACKAGE_LOCATION "Resources"
 	)
 
 	set(${A_PREFIX}_PROPERTIES
@@ -176,12 +260,12 @@ if(IOS)
 		QT_IOS_LAUNCH_SCREEN ${${A_PREFIX}_IOS_LAUNCHSCREEN_STORYBOARD}
 	)
 
-		# XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym"
-		# XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS "YES"
-		# XCODE_ATTRIBUTE_DEPLOYMENT_POSTPROCESSING "YES"
-		# XCODE_ATTRIBUTE_DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT "YES"
-		# XCODE_ATTRIBUTE_SKIP_INSTALL "NO"
-		# XCODE_ATTRIBUTE_INSTALL_PATH "/Applications"
+# XCODE_ATTRIBUTE_DEBUG_INFORMATION_FORMAT "dwarf-with-dsym"
+# XCODE_ATTRIBUTE_GCC_GENERATE_DEBUGGING_SYMBOLS "YES"
+# XCODE_ATTRIBUTE_DEPLOYMENT_POSTPROCESSING "YES"
+# XCODE_ATTRIBUTE_DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT "YES"
+# XCODE_ATTRIBUTE_SKIP_INSTALL "NO"
+# XCODE_ATTRIBUTE_INSTALL_PATH "/Applications"
 
 endif()
 
@@ -361,6 +445,7 @@ target_link_libraries(${A_NAME_APPLICATION}
 		Qt6::Quick
 		Qt6::QuickControls2
 		Qt6::Svg
+		${A_PREFIX}_SECURITY_HARDENING_ALIAS
 		AUniversal
 		ATemplates
 		AApplication
@@ -381,17 +466,17 @@ target_link_libraries(${A_NAME_APPLICATION}
 ## Precompiled headers settings
 
 if(
-	NOT ${${A_PREFIX}_SOURCES_PRECOMPILED_HEADERS_PRIVATE} EQUAL "" OR
-	NOT ${${A_PREFIX}_SOURCES_PRECOMPILED_HEADERS_PUBLIC} EQUAL ""
-)
-    if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.16 AND A_OPTION_USING_PCH)
-        message(STATUS "Using PCH for ${A_NAME_APPLICATION}")
-        target_precompile_headers(${A_NAME_APPLICATION}
+		NOT ${${A_PREFIX}_SOURCES_PRECOMPILED_HEADERS_PRIVATE} EQUAL "" OR
+		NOT ${${A_PREFIX}_SOURCES_PRECOMPILED_HEADERS_PUBLIC} EQUAL ""
+	)
+	if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.16 AND A_OPTION_USING_PCH)
+		message(STATUS "Using PCH for ${A_NAME_APPLICATION}")
+		target_precompile_headers(${A_NAME_APPLICATION}
 			PRIVATE ${${A_PREFIX}_SOURCES_PRECOMPILED_HEADERS_PRIVATE}
 			PUBLIC ${${A_PREFIX}_SOURCES_PRECOMPILED_HEADERS_PUBLIC}
-        )
-        set(CMAKE_PCH_INSTANTIATE_TEMPLATES ON)
-    else()
-        message(STATUS "No PCH for ${A_NAME_APPLICATION}")
-    endif()
+		)
+	set(CMAKE_PCH_INSTANTIATE_TEMPLATES ON)
+	else()
+		message(STATUS "No PCH for ${A_NAME_APPLICATION}")
+	endif()
 endif()

@@ -5,33 +5,33 @@
     <name></name>
     <message id="A.MainWindow.Title">
         <location filename="../UI/AUIPrimitives/Window/AWindowMobileSafeArea.qml" line="29"/>
-        <location filename="../UI/AUIPrimitives/Window/AWindowMobileSafeArea.qml" line="78"/>
+        <location filename="../UI/AUIPrimitives/Window/AWindowMobileSafeArea.qml" line="85"/>
         <source></source>
         <translation>Data Modifier</translation>
     </message>
     <message id="DM.Password.Copied">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="286"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="599"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="294"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="608"/>
         <source></source>
         <translation>Senha copiada para a área de transferência</translation>
     </message>
     <message id="DM.Password.Pasted">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="269"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="582"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="277"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="591"/>
         <source></source>
         <translation>Senha colada da área de transferência</translation>
     </message>
     <message id="DM.Password.Deleted">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="295"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="608"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="303"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="617"/>
         <source></source>
         <translation>Senha excluída</translation>
     </message>
     <message id="DM.Password.Empty">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="120"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="192"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="400"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="489"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="128"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="200"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="409"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="498"/>
         <source></source>
         <translation>A senha obrigatória está vazia</translation>
     </message>
@@ -51,44 +51,44 @@
         <translation>Dados excluídos</translation>
     </message>
     <message id="DM.Decrypted.Empty">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="128"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="500"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="136"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="509"/>
         <source></source>
         <translation>Os dados descriptografados estão vazios</translation>
     </message>
     <message id="DM.Data.Decrypted">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="137"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="417"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="145"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="426"/>
         <source></source>
         <translation>Dados descriptografados</translation>
     </message>
     <message id="DM.Error.SomethingWentWrong">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="140"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="216"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="298"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="421"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="513"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="611"/>
-        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="119"/>
-        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="151"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="148"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="224"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="306"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="430"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="522"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="620"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="127"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="159"/>
         <source></source>
         <translation>Algo deu errado</translation>
     </message>
     <message id="DM.Error.WrongPassword">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="142"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="423"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="150"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="432"/>
         <source></source>
         <translation>Senha incorreta</translation>
     </message>
     <message id="DM.Encrypted.Empty">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="203"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="408"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="211"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="417"/>
         <source></source>
         <translation>Os dados criptografados estão vazios</translation>
     </message>
     <message id="DM.Data.Encrypted">
-        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="212"/>
-        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="509"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainAllInOne.qml" line="220"/>
+        <location filename="../UI/DMUI/Screen/DMScreenMainSplited.qml" line="518"/>
         <source></source>
         <translation>Dados criptografados</translation>
     </message>
@@ -97,8 +97,8 @@
         <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="27"/>
         <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="107"/>
         <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="108"/>
-        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="209"/>
-        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="210"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="217"/>
+        <location filename="../UI/DMUI/Bar/DMBarPassword.qml" line="218"/>
         <source></source>
         <translation>Digite a senha</translation>
     </message>
@@ -232,53 +232,73 @@
         <source></source>
         <translation>Quando isso estiver ativado, o menu de contexto de entrada de texto não estará disponível</translation>
     </message>
-    <message id="DM.MainMenu.ScreenPrivacy.label">
+    <message id="DM.MainMenu.SwitchRandomPasswordmaskLength.label">
         <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="125"/>
+        <source></source>
+        <translation>Use um comprimento aleatório para a máscara da senha</translation>
+    </message>
+    <message id="DM.MainMenu.SwitchRandomPasswordmaskLength.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="126"/>
+        <source></source>
+        <translation>O comprimento da máscara de senha no campo de entrada de senha será gerado aleatoriamente e não será igual ao da senha definida</translation>
+    </message>
+    <message id="DM.MainMenu.SwitchPanicButton.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="134"/>
+        <source></source>
+        <translation>Use o botão &apos;M&apos; do menu principal como &apos;botão de pânico&apos;</translation>
+    </message>
+    <message id="DM.MainMenu.SwitchPanicButton.notice">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="135"/>
+        <source></source>
+        <translation>Ao pressionar o botão &apos;M&apos;, todos os dados serão apagados e o aplicativo será encerrado; para acessar o menu principal, mantenha o botão &apos;M&apos; pressionado</translation>
+    </message>
+    <message id="DM.MainMenu.ScreenPrivacy.label">
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="143"/>
         <source></source>
         <translation>Privacidade da tela</translation>
     </message>
     <message id="DM.MainMenu.ScreenPrivacy.IOS.notice">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="127"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="145"/>
         <source></source>
         <translation>Bloquear a visualização da tela no seletor de aplicativos e notificar quando uma captura de tela for realizada</translation>
     </message>
     <message id="DM.MainMenu.ScreenPrivacy.Android.notice">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="128"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="146"/>
         <source></source>
         <translation>Bloqueio da visualização da tela no seletor de aplicativos e captura de tela</translation>
     </message>
     <message id="DM.MainMenu.Language.label">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="140"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="158"/>
         <source></source>
         <translation>Idioma do aplicativo</translation>
     </message>
     <message id="DM.MainMenu.Language.notice">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="141"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="159"/>
         <source></source>
         <translation>Selecione o idioma do aplicativo</translation>
     </message>
     <message id="DM.MainMenu.UISchema.label">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="148"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="166"/>
         <source></source>
         <translation>Esquema de UI/UX da aplicação</translation>
     </message>
     <message id="DM.MainMenu.UISchema.notice">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="149"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="167"/>
         <source></source>
         <translation>Ao selecionar o esquema &quot;All-In-One&quot;, tanto os dados criptografados quanto os descriptografados são processados ​​em uma única janela; já no esquema &quot;Splitted&quot;, eles são tratados em janelas separadas</translation>
     </message>
     <message id="DM.MainMenu.About.label">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="161"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="179"/>
         <source></source>
         <translation>Sobre o aplicativo</translation>
     </message>
     <message id="DM.MainMenu.ButtonQuit.label">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="167"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="185"/>
         <source></source>
         <translation>Encerrar aplicativo</translation>
     </message>
     <message id="DM.MainMenu.ButtonQuit.notice">
-        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="168"/>
+        <location filename="../UI/DMUI/MainMenu/DMMainMenu.qml" line="186"/>
         <source></source>
         <translation>Encerrar o aplicativo</translation>
     </message>
@@ -295,17 +315,17 @@
         <translation>Digite ou cole os dados para criptografia ou descriptografia</translation>
     </message>
     <message id="DM.Error.ScreenshotTaken">
-        <location filename="../UI/DMUIComponents/Screen/DMScreen.qml" line="146"/>
+        <location filename="../UI/DMUIComponents/Screen/DMScreen.qml" line="145"/>
         <source></source>
         <translation>Captura de tela realizada</translation>
     </message>
     <message id="DM.Error.ScreenRecordingStarted">
-        <location filename="../UI/DMUIComponents/Screen/DMScreen.qml" line="152"/>
+        <location filename="../UI/DMUIComponents/Screen/DMScreen.qml" line="151"/>
         <source></source>
         <translation>Gravação de tela iniciada</translation>
     </message>
     <message id="DM.Error.ScreenRecordingStopped">
-        <location filename="../UI/DMUIComponents/Screen/DMScreen.qml" line="154"/>
+        <location filename="../UI/DMUIComponents/Screen/DMScreen.qml" line="153"/>
         <source></source>
         <translation>Gravação de tela interrompida</translation>
     </message>
