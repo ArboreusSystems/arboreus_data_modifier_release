@@ -3,7 +3,7 @@
 
 [Official website](https://modifier.arboreus.systems)
 
-[iPhone/iPad application in Apple AppStore](https://apps.apple.com/app/modifier/id6809129107)  
+[iPhone/iPad application in Apple AppStore](https://apps.apple.com/app/modifier/id6809129107)
 
 [Application for Android devices in Google Play Market](https://play.google.com/store/apps/details?id=systems.arboreus.data.modifier.release)
 
